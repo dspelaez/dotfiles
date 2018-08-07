@@ -9,6 +9,11 @@
 # ===================================================================
 #   Setting up OSX for scientific use
 # -------------------------------------------------------------------
+#
+#   Usage:
+#      > sudo sh -c `curl -s https://raw.githubusercontent.com/dspelaez/dotfiles/master/config.sh`
+#
+#   Author:
 #     Daniel Santiago
 #     github/dspelaez
 # ===================================================================
@@ -17,20 +22,35 @@ set -e
 
 # 0. set env variables and dirs
 # ===============================
-mkdir $HOME/tmp/
+
+# starting
+clear
+printf "\nSetting up your `uname -i`\n"
+printf "\nContinue? [y/n] "; read OK
+if [ "$OK" != "Y" ] && [ "$OK" != "y" ]
+then
+  printf "\n Exiting installation...\n"
+  exit 0
+fi
+
+# create main directory
+mkdir -p $HOME/tmp/
 cd $HOME/tmp
 
 
-# 1. install xcode and x11
+# 1. install xcode
 # ===============================
 if [[ "$(xcode-select -p)" == "" ]]; then
   printf "\nInstalling Xcode\n"
   xcode-select --install
+else
+  printf "\nXcode Installed\n"
 fi
-
 
 # 2. change default shell by zsh
 # ===============================
+printf "\nInstalling zsh\n"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 
 # 3. homebrew
