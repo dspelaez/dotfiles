@@ -106,6 +106,7 @@ apps=(
   google-drive-file-stream
   google-earth-pro
   skim
+  jabref
   firefox   
   spotify
   dropbox
