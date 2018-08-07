@@ -116,7 +116,7 @@ apps=(
   )
 
 printf "\nThe following casks will be installed\n"
-printf '   - %s\n' "${taps[@]}"
+printf '   - %s\n' "${apps[@]}"
 printf "\nContinue [y/n] "; read OK
 if [ "$OK" != "Y" ] && [ "$OK" != "y" ]
 then
