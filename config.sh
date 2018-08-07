@@ -66,6 +66,9 @@ brew upgrade
 # 3.2. install some taps
 # -------------------------------
 taps=(
+  wget 
+  git
+  coreutils
   vim
   neovim
   tmux
@@ -73,7 +76,6 @@ taps=(
   fortune
   cowsay
   ranger
-  coreutils
   minicom
   imagemagick
   pandoc
@@ -84,9 +86,8 @@ taps=(
   reattach-to-user-namespace
   m4
   python
+  pipenv
   node
-  git
-  wget 
   )
 
 printf "\nThe following taps will be installed\n"
