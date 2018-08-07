@@ -1,0 +1,62 @@
+# --- alias ---
+alias so='source ~/.zshrc'
+alias vimrc='vim ~/.vimrc'
+alias nvimrc='nvim ~/.config/nvim/init.vim'
+alias notes='nvim ~/Data/notes/index.md'
+export VISUAL=nvim
+export EDITOR="$VISUAL"
+
+# --- /usr/local/bin ---
+export PATH=/usr/local/bin:$PATH
+export MANPATH=/usr/local/opt/coreutils/libexec/gnuman:$MANPATH
+
+# --- docker ---
+#eval $(docker-machine env default)
+
+# --- anaconda ---
+export PATH=/usr/local/anaconda/bin:$PATH
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+export PYTHONDONTWRITEBYTECODE=1      
+
+# --- latex ---
+#export PATH=/Library/TeX/texbin:$PATH
+
+# --- gnu coreutils ---
+export PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
+
+# --- MPICH ---
+#export PATH=/usr/local/mpich/bin:$PATH
+
+# --- cluster-unica ---
+#alias noaa="ssh -x noaa@168.176.120.18"*/
+
+
+# ---- netcdf-fortran ---
+#export NCDIR=/usr/local/netcdf
+#export DYLD_LIBRARY_PATH=$NCDIR/lib:$DYLD_LIBRARY_PATH
+
+
+# --- wavewatch iii 5.16 ---
+#export WWATCH3_NETCDF=NC4
+#export NETCDF_CONFIG=$NCDIR/bin/nf-config
+#export WW3DIR=$HOME/Data/models/ww3/5.16
+
+
+# --- gotm - fabm ---
+#export PATH=/Users/dpelaez/Models/gotm/bin:$PATH
+#export PATH=/Users/dpelaez/Models/fabm/bin:$PATH
+
+
+# --- swash model ---
+#export PATH=/Users/dpelaez/Models/swash/swash401:$PATH
+
+
+# --- z ---
+. /usr/local/etc/profile.d/z.sh
+
+
+# --- mensaje del prompt ---
+if [ -x /usr/local/bin/cowsay -a -x /usr/local/bin/fortune ]; then
+    fortune | cowsay -f $(ls /usr/local/share/cows/*.cow | shuf -n1)
+fi

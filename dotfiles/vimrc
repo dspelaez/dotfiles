@@ -1,0 +1,141 @@
+"==================================
+"    Nombre:     $HOME/.config/nvim/init.vim
+"    Autor:      Daniel Santiago
+"    Github:     dspelaez/dotfiles
+"    Fecha:      2015-05-05
+"    Modificado: 2018-01-16
+"==================================
+
+" ============================= sintaxis y formato ===================================
+
+" sincronizar rutas de vim {{{
+" ----------------------------
+  set runtimepath+=~/.vim,~/.vim/after
+  set packpath+=~/.vim
+" --- }}}
+
+" habilitar sintaxis y numeros de lineas {{{
+" ---------------------------------------
+  set relativenumber
+  set number
+  syntax enable
+  set noshowmode
+  set laststatus=2
+  set showtabline=2
+  set guioptions-=e
+  set noswapfile
+  "highlight Comment cterm=italic
+" --- }}}
+
+" configurar indentado {{{
+" --------------------
+  set expandtab
+  set shiftwidth=2
+  set softtabstop=2
+" --- }}}
+
+" configurar columnas {{{
+" -------------------
+  set textwidth=80
+  let &colorcolumn=join(range(100,999),",")
+  highlight ColorColumn ctermbg=15 guibg=lightgrey
+" --- }}}
+
+" configurar split {{{
+" ----------------
+  nnoremap <C-J> <C-W><C-J>
+  nnoremap <C-K> <C-W><C-K>
+  nnoremap <C-L> <C-W><C-L>
+  nnoremap <C-H> <C-W><C-H>
+  set splitbelow
+  set splitright
+" --- }}}
+
+" habilitar backspace {{{
+" -------------------
+  set nocompatible
+  set backspace=2
+" --- }}}
+
+" habilitar copy-paste {{{
+" -------------------
+  set clipboard=unnamed
+" --- }}}
+
+" moverse entre buffers{{{
+" -----------
+  nnoremap <S-Tab> :bnext<CR>
+" --- }}}
+
+" mapear algunos comandos {{{
+" -----------
+  map <silent> <leader>m :w<CR>:make<CR><CR><CR>
+  map <Esc><Esc> :w<CR>
+  map Q mxgqip`x
+" --- }}}
+
+" folding methods {{{
+" ---------------
+  set foldmethod=marker
+" --- }}}
+
+"clear highlight in the last search {{{
+  nnoremap <CR> :noh<CR><CR>
+" --- }}}
+
+
+" ============================= tipos de archivo ====================================
+" text files {{{
+" ----------
+  filetype plugin on
+  autocmd FileType markdown set spell spelllang=es
+  autocmd FileType tex      set spell spelllang=es
+" --- }}}
+
+" python files {{{
+" ------------
+  autocmd FileType py set foldmethod=marker
+" --- }}}
+
+" bibtex files {{{
+" ------------
+  "function doi2bib(doi)
+    "read !python ~/Dropbox/References/doi2bib.py doi
+  "endfunction
+  
+"function! DoiToBib()
+  "let curline = getline('.')
+  "call inputsave()
+  "let doi = input('Enter doi: ')
+  "call inputrestore()
+  ""call setline('.', curline . ' ' . name)
+  "read !python ~/Dropbox/References/doi2bib.py . doi
+"endfunction
+" --- }}}
+
+
+" =============================     plug-ins     ====================================
+
+" set the plugins path and initialize
+  call plug#begin('~/.vim/plugged')
+
+" NERDTree {{{
+  Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+  map <C-n> :NERDTreeToggle<CR>
+" --- }}}
+
+" Lightline {{{
+  Plug 'itchyny/lightline.vim'
+" --- }}}
+
+" Color-scheme {{{
+  Plug 'flazz/vim-colorschemes'
+  set background=dark
+  colorscheme solarized 
+" --- }}}
+
+" All of your Plugs must be added before the following line
+  call plug#end()
+
+" ============================= fin del archivo  ====================================
+
