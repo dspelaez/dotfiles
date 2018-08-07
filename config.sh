@@ -74,6 +74,7 @@ taps=(
   cowsay
   ranger
   coreutils
+  minicom
   imagemagick
   pandoc
   markdown
@@ -140,7 +141,7 @@ then
 else
   wget -nc -nv https://repo.anaconda.com/archive/Anaconda3-5.2.0-MacOSX-x86_64.sh
   sudo sh ./Anaconda3-5.2.0-MacOSX-x86_64.sh -s -b -p /usr/local/anaconda
-  /usr/local/anaconda/bin/conda install netCDF4 cartopy
+  /usr/local/anaconda/bin/conda install netCDF4 cartopy pyserial
 fi
 
 
