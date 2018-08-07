@@ -11,21 +11,21 @@
 # -------------------------------------------------------------------
 #
 #   Usage:
-#      > sudo sh -c `curl -s https://raw.githubusercontent.com/dspelaez/dotfiles/master/config.sh`
+#      curl https://raw.githubusercontent.com/dspelaez/dotfiles/master/config.sh -o config.sh
+#      sh ./config.sh 
 #
 #   Author:
 #     Daniel Santiago
 #     github/dspelaez
 # ===================================================================
 
-#set -e
 
-# 0. set env variables and dirs
+# 1. set env variables and dirs
 # ===============================
 
 # starting
 clear
-printf "\nSetting up your `uname -i`\n"
+printf "\nSetting up your OSX\n"
 printf "\nContinue? [y/n] "; read OK
 if [ "$OK" != "Y" ] && [ "$OK" != "y" ]
 then
@@ -38,24 +38,13 @@ mkdir -p $HOME/tmp/
 cd $HOME/tmp
 
 
-# 1. install xcode
+# 2. install xcode
 # ===============================
 if [[ "$(xcode-select -p)" == "" ]]; then
   printf "\nInstalling Xcode\n"
   xcode-select --install
 else
   printf "\nXcode Installed\n"
-fi
-
-# 2. change default shell by zsh
-# ===============================
-printf "\nInstalling oh-my-zsh? [y/n] "; read OK
-if [ "$OK" != "Y" ] && [ "$OK" != "y" ]
-then
-  printf "\n Exiting installation...\n"
-  exit 0
-else
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 fi
 
 # 3. homebrew
@@ -84,7 +73,7 @@ taps=(
   fortune
   cowsay
   ranger
-  coreutiles
+  coreutils
   imagemagick
   pandoc
   markdown
@@ -120,7 +109,6 @@ apps=(
   spotify
   dropbox
   docker
-  vlc
   skype
   iterm2
   mactex
@@ -135,13 +123,12 @@ then
   printf "\n Exiting installation...\n"
   exit 0
 else
-  brew install ${taps[@]}
   brew cask install --force --appdir="/Applications" ${apps[@]}
   brew cleanup
 fi
 
 
-# 5. install anaconda
+# 4. install anaconda
 # ===============================
 printf "\nInstalling Anaconda 5.2? [y/n] "; read OK
 if [ "$OK" != "Y" ] && [ "$OK" != "y" ]
@@ -150,12 +137,12 @@ then
   exit 0
 else
   wget -nc -nv https://repo.anaconda.com/archive/Anaconda3-5.2.0-MacOSX-x86_64.sh
-  sh ./Anaconda3-5.2.0-MacOSX-x86_64.sh -s -b -p /usr/local/anaconda
+  sudo sh ./Anaconda3-5.2.0-MacOSX-x86_64.sh -s -b -p /usr/local/anaconda
   /usr/local/anaconda/bin/conda install netCDF4 cartopy
 fi
 
 
-# 7. copy dotfiles
+# 5. copy dotfiles
 # ==============================
 
 printf "\nAdd dotfiles [y/n] "; read OK
@@ -179,7 +166,7 @@ ln -sf $HOME/.dotfiles/matplotlibrc $HOME/.matplotlib/matplotlibrc
 cd ..
 
 
-# 8. vim neovim, tmux conf
+# 6. vim neovim, tmux conf
 # ==============================
 
 # vim-plug for neovim
@@ -194,10 +181,21 @@ ln -sf $HOME/.dotfiles/init.vim $HOME/.config/nvim/init.vim
 nvim +PlugInstall +PlugUpgrade +PlugUpdate +PlugClean! +UpdateRemotePlugins +qall
 
 
-# clean up
+# 7. change default shell by zsh
+# ===============================
+printf "\nInstalling oh-my-zsh? [y/n] "; read OK
+if [ "$OK" != "Y" ] && [ "$OK" != "y" ]
+then
+  printf "\n Exiting installation...\n"
+  exit 0
+else
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+fi
+
+
+# 8. clean up
 # ==============================
 cd ../
 rm -rf tmp
-
 
 # --- end of file ---
