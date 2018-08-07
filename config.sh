@@ -105,6 +105,7 @@ apps=(
   google-chrome
   google-drive-file-stream
   google-earth-pro
+  skim
   firefox   
   spotify
   dropbox
@@ -156,11 +157,12 @@ fi
 git config --global user.name "Daniel Santiago"
 git config --global user.email dspelaez@gmail.com
 
-# clone repository
+# clone repository and copy files to $HOME
 git clone https://github.com/dspelaez/dotfiles.git
+cd dotfiles && cp -r dotfiles $HOME/.dotfiles
 
 # make symbolic links
-cd dotfiles && cp -r dotfiles $HOME/.dotfiles
+ln -sf $HOME/.dotfiles/profile $HOME/.profile
 ln -sf $HOME/.dotfiles/latexmk $HOME/.latexmk
 ln -sf $HOME/.dotfiles/matplotlibrc $HOME/.matplotlib/matplotlibrc
 cd ..
@@ -189,13 +191,18 @@ then
   printf "\n Exiting installation...\n"
   exit 0
 else
+  #
+  # download ohmyzsh
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+  #
+  # add .profile to .zshrc
+  echo "" >> $HOME/.zshrc
+  echo "source $HOME/.profile" >> $HOME/.zshrc
 fi
 
 
 # 8. clean up
 # ==============================
-cd ../
-rm -rf tmp
+cd ../ && rm -rf tmp
 
 # --- end of file ---

@@ -6,6 +6,9 @@ alias notes='nvim ~/Data/notes/index.md'
 export VISUAL=nvim
 export EDITOR="$VISUAL"
 
+# --- oh-my-zsh ---
+export ZSH_THEME="bureau"
+
 # --- /usr/local/bin ---
 export PATH=/usr/local/bin:$PATH
 export MANPATH=/usr/local/opt/coreutils/libexec/gnuman:$MANPATH
