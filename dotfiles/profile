@@ -13,6 +13,12 @@ export ZSH_THEME="bureau"
 export PATH=/usr/local/bin:$PATH
 export MANPATH=/usr/local/opt/coreutils/libexec/gnuman:$MANPATH
 
+# --- pyenv and pipenv ---
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+export WORKON_HOME=$HOME/.venvs
+
 # --- docker ---
 #eval $(docker-machine env default)
 

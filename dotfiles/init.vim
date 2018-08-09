@@ -14,6 +14,7 @@
   set runtimepath+=~/.vim,~/.vim/after
   set packpath+=~/.vim
   let g:python_host_prog='/usr/local/bin/python'
+  "let g:python_host_prog = '~/.virtualenvs/neovim2-[pipenv garbage]/bin/python'
 " --- }}}
 
 " habilitar sintaxis y numeros de lineas {{{
