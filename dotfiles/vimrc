@@ -129,7 +129,7 @@
 " --- }}}
 
 " Color-scheme {{{
-  Plug 'flazz/vim-colorschemes'
+  Plug 'altercation/vim-colors-solarized'
   set background=dark
   colorscheme solarized 
 " --- }}}

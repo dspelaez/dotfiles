@@ -13,7 +13,7 @@
 " ----------------------------------
   set runtimepath+=~/.vim,~/.vim/after
   set packpath+=~/.vim
-  let g:python_host_prog='/usr/local/bin/python'
+  let g:python_host_prog='/usr/local/bin/python3'
   "let g:python_host_prog = '~/.virtualenvs/neovim2-[pipenv garbage]/bin/python'
 " --- }}}
 
@@ -136,7 +136,7 @@
 " --- }}}
 
 " Color-scheme {{{
-  Plug 'flazz/vim-colorschemes'
+  Plug 'altercation/vim-colors-solarized'
   set background=dark
   colorscheme solarized 
 " --- }}}
