@@ -11,7 +11,6 @@
 " sincronizar rutas de vim {{{
 " ----------------------------
   set runtimepath+=~/.vim,~/.vim/after
-  set packpath+=~/.vim
 " --- }}}
 
 " habilitar sintaxis y numeros de lineas {{{
@@ -129,7 +128,7 @@
 " --- }}}
 
 " Color-scheme {{{
-  Plug 'altercation/vim-colors-solarized'
+  Plug 'flazz/vim-colorschemes'
   set background=dark
   colorscheme solarized 
 " --- }}}

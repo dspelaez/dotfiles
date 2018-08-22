@@ -7,13 +7,16 @@
 "==================================
 
 
+
 " ============================= sintaxis y formato ===================================
 
 " sincronizar rutas de nvim y python {{{
 " ----------------------------------
   set runtimepath+=~/.vim,~/.vim/after
   set packpath+=~/.vim
-  let g:python_host_prog='$HOME/.miniconda/envs/neovim/bin/python'
+
+  let g:loaded_python_provider = 1
+  let g:python3_host_prog='/Users/danielsantiago/.miniconda/envs/neovim/bin/python'
 " --- }}}
 
 " habilitar sintaxis y numeros de lineas {{{
@@ -135,7 +138,7 @@
 " --- }}}
 
 " Color-scheme {{{
-  Plug 'altercation/vim-colors-solarized'
+  Plug 'flazz/vim-colorschemes'
   set background=dark
   colorscheme solarized 
 " --- }}}
@@ -147,13 +150,7 @@
 
 " deoplete {{{
   Plug 'ervandew/supertab'
-  if has('nvim')
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  else
-    Plug 'Shougo/deoplete.nvim'
-    Plug 'roxma/nvim-yarp'
-    Plug 'roxma/vim-hug-neovim-rpc'
-  endif
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   let g:deoplete#enable_at_startup = 1
 " --- }}}
 
