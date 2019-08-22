@@ -42,7 +42,8 @@
 " configurar columnas {{{
 " -------------------
   set textwidth=80
-  let &colorcolumn=join(range(100,999),",")
+  "let &colorcolumn=join(range(100,999),",")
+  let &colorcolumn=join(range(100,100),",")
   highlight ColorColumn ctermbg=15 guibg=lightgrey
 " --- }}}
 
@@ -138,9 +139,21 @@
 " --- }}}
 
 " Color-scheme {{{
-  Plug 'flazz/vim-colorschemes'
+  Plug 'lifepillar/vim-solarized8'
+  if exists('+termguicolors')
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+    set termguicolors
+  endif
   set background=dark
-  colorscheme solarized 
+  colorscheme solarized8_flat
+" --- }}}
+
+" vim-jupyternotebook {{{
+  Plug 'szymonmaszke/vimpyter'
+  "autocmd Filetype ipynb nmap <silent><Leader>b :VimpyterInsertPythonBlock<CR>
+  "autocmd Filetype ipynb nmap <silent><Leader>j :VimpyterStartJupyter<CR>
+  "autocmd Filetype ipynb nmap <silent><Leader>n :VimpyterStartNteract<CR>
 " --- }}}
 
 " supertab {{{
@@ -157,10 +170,10 @@
 " ultisnips  {{{
   Plug 'SirVer/ultisnips'
   Plug 'honza/vim-snippets'
-  let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-  let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+  "let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+  "let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
   let g:ultisnips_python_style = 'google'
-  let g:SuperTabDefaultCompletionType = '<C-n>'
+  "let g:SuperTabDefaultCompletionType = '<C-n>'
   let g:UltiSnipsExpandTrigger='<tab>'
   let g:UltiSnipsJumpForwardTrigger='<tab>'
   let g:UltiSnipsJumpBackwardTrigger='<s-tab>'
@@ -193,11 +206,12 @@
 
 " Vimtex {{{
   Plug 'lervag/vimtex'
+  let g:tex_conceal = ""
   let g:vimtex_view_general_viewer
       \ = '/Applications/Skim.app/Contents/SharedSupport/displayline'
   let g:vimtex_view_general_options = '-r -g @line @pdf @tex'
   let g:vimtex_view_general_options_latexmk = '-r -g 1'
-  let g:vimtex_compiler_latexmk = {
+    let g:vimtex_compiler_latexmk = {
       \ 'background' : 1,
       \ 'callback' : 1,
       \ 'continuous' : 0,
@@ -208,6 +222,10 @@
       \   '-synctex=1',
       \   '-interaction=nonstopmode',
       \ ]}
+" --- }}}
+ 
+" Emmet {{{
+  Plug 'mattn/emmet-vim'
 " --- }}}
 
 " All of your Plugs must be added before the following line

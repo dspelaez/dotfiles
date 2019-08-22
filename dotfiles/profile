@@ -1,20 +1,22 @@
 # --- alias ---
-alias so='source ~/.zshrc'
-alias vimrc='vim ~/.vimrc'
-alias nvimrc='nvim ~/.config/nvim/init.vim'
-alias notes='nvim ~/Data/notes/index.md'
+alias so='source $HOME/.zshrc'
+alias vimrc='vim $HOME/.vimrc'
+alias nvimrc='nvim $HOME/.config/nvim/init.vim'
+alias notes='nvim $HOME/Workspace/notes/index.md'
+alias rmdsstore='find . -name '.DS_Store' -type f -delete'
 export VISUAL=nvim
 export EDITOR="$VISUAL"
 
 # --- oh-my-zsh ---
 export ZSH_THEME="bureau"
+fpath=(/usr/local/share/zsh-completions $fpath)
 
 # --- /usr/local/bin ---
 export PATH=/usr/local/bin:$PATH
 export MANPATH=/usr/local/opt/coreutils/libexec/gnuman:$MANPATH
 
-# --- oh-my-zsh ---
-export ZSH_THEME="bureau"
+# --- pyenv ---
+eval "$(pyenv init -)"
 
 # --- docker ---
 #eval $(docker-machine env default)
@@ -35,8 +37,10 @@ export PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
 # --- z ---
 . /usr/local/etc/profile.d/z.sh
 
+# --- tmuxinator ---
+source ~/.dotfiles/tmuxinator.zsh
 
 # --- mensaje del prompt ---
-if [ -x /usr/local/bin/cowsay -a -x /usr/local/bin/fortune ]; then
-    fortune | cowsay -f $(ls /usr/local/share/cows/*.cow | shuf -n1)
-fi
+#if [ -x /usr/local/bin/cowsay -a -x /usr/local/bin/fortune ]; then
+    #fortune | cowsay -f $(ls /usr/local/share/cows/*.cow | shuf -n1)
+#fi

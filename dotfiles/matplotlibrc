@@ -229,7 +229,7 @@ text.usetex         : True  # use latex for all text handling. The following fon
                               # If another font is desired which can loaded using the
                               # LaTeX \usepackage command, please inquire at the
                               # matplotlib mailing list
-text.latex.unicode : True # use "ucs" and "inputenc" LaTeX packages for handling
+#text.latex.unicode : True # use "ucs" and "inputenc" LaTeX packages for handling
                             # unicode strings.
 #text.latex.preamble :  # IMPROPER USE OF THIS FEATURE WILL LEAD TO LATEX FAILURES
                             # AND IS THEREFORE UNSUPPORTED. PLEASE DO NOT ASK FOR HELP
@@ -329,7 +329,7 @@ axes.labelcolor     : black
 #axes.unicode_minus  : True    # use unicode for the minus symbol
                                # rather than hyphen.  See
                                # http://en.wikipedia.org/wiki/Plus_and_minus_signs#Character_codes
-# axes.prop_cycle    : cycler('color', ['1f77b4', 'ff7f0e', '2ca02c', 'd62728', '9467bd', '8c564b', 'e377c2', '7f7f7f', 'bcbd22', '17becf'])
+axes.prop_cycle    : cycler('color', ['1f77b4', 'ff7f0e', 'd62728', '8c564b', 'e377c2', '7f7f7f', 'bcbd22', '17becf'])
                       # color cycle for plot lines  as list of string
                       # colorspecs: single letter, long name, or web-style hex
 #axes.autolimit_mode : data # How to scale axes limits to the data.
@@ -370,7 +370,7 @@ xtick.major.pad      : 3.5      # distance to major tick label in points
 xtick.minor.pad      : 3.4      # distance to the minor tick label in points
 xtick.color          : k      # color of the tick labels
 xtick.labelsize      : medium # fontsize of the tick labels
-xtick.direction      : in     # direction: in, out, or inout
+xtick.direction      : in    # direction: in, out, or inout
 xtick.minor.visible  : False  # visibility of minor ticks on x-axis
 xtick.major.top      : True   # draw x axis top major ticks
 xtick.major.bottom   : True   # draw x axis bottom major ticks
@@ -387,7 +387,7 @@ ytick.major.pad      : 3.5      # distance to major tick label in points
 ytick.minor.pad      : 3.4      # distance to the minor tick label in points
 ytick.color          : k      # color of the tick labels
 ytick.labelsize      : medium # fontsize of the tick labels
-ytick.direction      : in     # direction: in, out, or inout
+ytick.direction      : in    # direction: in, out, or inout
 ytick.minor.visible  : False  # visibility of minor ticks on y-axis
 ytick.major.left     : True   # draw y axis left major ticks
 ytick.major.right    : True   # draw y axis right major ticks
