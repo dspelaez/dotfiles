@@ -40,7 +40,6 @@
 " configurar columnas {{{
 " -------------------
   set textwidth=80
-  "let &colorcolumn=join(range(100,999),",")
   let &colorcolumn=join(range(90,90),",")
   highlight ColorColumn ctermbg=15 guibg=lightgrey
 " --- }}}
