@@ -120,14 +120,14 @@
 
 " =============================     plug-ins     ====================================
 
-" set the plugins path and initialize {{{
-  if empty(glob('~/.vim/autoload/plug.vim'))
-    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+" vim-plug {{{
+  if empty(glob('~/.config/nvim/autoload/plug.vim'))
+    silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
       \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+    autocmd VimEnter * PlugInstall --sync
   endif
 
-  call plug#begin('~/.vim/plugged')"
+  call plug#begin('~/.config/nvim/plugged')"
 " --- }}}
 
 " NERDTree {{{
@@ -152,6 +152,11 @@
   endif
   set background=dark
   colorscheme solarized8_flat
+  "
+  if empty(glob('~/.config/nvim/pack/themes/opt/solarized8'))
+    silent !git clone https://github.com/lifepillar/vim-solarized8.git
+      \ ~/.config/nvim/pack/themes/opt/solarized8
+  endif
 " --- }}}
 
 " supertab {{{
