@@ -3,10 +3,8 @@
 "    Autor:      Daniel Santiago
 "    Github:     dspelaez/dotfiles
 "    Fecha:      2015-05-05
-"    Modificado: 2018-01-16
+"    Modificado: 2019-08-26
 "==================================
-
-
 
 " ============================= sintaxis y formato ===================================
 
@@ -16,7 +14,7 @@
   set packpath+=~/.vim
 
   let g:loaded_python_provider = 1
-  let g:python3_host_prog='/Users/danielsantiago/.miniconda/envs/neovim/bin/python'
+  let g:python3_host_prog=expand('~/.miniconda/envs/neovim/bin/python')
 " --- }}}
 
 " habilitar sintaxis y numeros de lineas {{{
@@ -43,7 +41,7 @@
 " -------------------
   set textwidth=80
   "let &colorcolumn=join(range(100,999),",")
-  let &colorcolumn=join(range(100,100),",")
+  let &colorcolumn=join(range(90,90),",")
   highlight ColorColumn ctermbg=15 guibg=lightgrey
 " --- }}}
 
@@ -94,8 +92,8 @@
 " text files {{{
 " ----------
   filetype plugin on
-  autocmd FileType markdown set spell spelllang=es
-  autocmd FileType tex      set spell spelllang=es
+  autocmd FileType markdown set spell spelllang=en,es
+  autocmd FileType tex      set spell spelllang=en,es
 " --- }}}
 
 " python files {{{
@@ -122,8 +120,15 @@
 
 " =============================     plug-ins     ====================================
 
-" set the plugins path and initialize
-  call plug#begin('~/.vim/plugged')
+" set the plugins path and initialize {{{
+  if empty(glob('~/.vim/autoload/plug.vim'))
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+      \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+  endif
+
+  call plug#begin('~/.vim/plugged')"
+" --- }}}
 
 " NERDTree {{{
   Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -147,13 +152,6 @@
   endif
   set background=dark
   colorscheme solarized8_flat
-" --- }}}
-
-" vim-jupyternotebook {{{
-  Plug 'szymonmaszke/vimpyter'
-  "autocmd Filetype ipynb nmap <silent><Leader>b :VimpyterInsertPythonBlock<CR>
-  "autocmd Filetype ipynb nmap <silent><Leader>j :VimpyterStartJupyter<CR>
-  "autocmd Filetype ipynb nmap <silent><Leader>n :VimpyterStartNteract<CR>
 " --- }}}
 
 " supertab {{{
@@ -181,7 +179,7 @@
 
 " Vim-Templates {{{
   Plug 'aperezdc/vim-template'
-  let g:email = "dpelaez@cicese.edu.mx"
+  let g:email = "dspelaez@gmail.com"
   let g:user = "Daniel Santiago"
   let g:license = "GNU/GPL"
 " --- }}}
@@ -192,11 +190,17 @@
 
 " VimWiki {{{
   Plug 'vimwiki/vimwiki'
+  let g:vimwiki_list = [{'path': '~/Dropbox/notes/',
+                       \ 'syntax': 'markdown', 'ext': '.md'}]
+  nmap <Leader>wcr <Plug>VimwikiDiaryGenerateLinks
+" --- }}}
+
+" vim instant markdown {{{
   Plug 'suan/vim-instant-markdown'
-  let g:vimwiki_root = '$HOME/Data/notes'
-  let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
+  let g:instant_markdown_slow = 0
+  let g:instant_markdown_mathjax = 0
   let g:instant_markdown_autostart = 0
-  map <leader>md :InstantMarkdownPreview<CR>
+  map <leader>ll :InstantMarkdownPreview<CR>
 " --- }}}
 
 " Calendar {{{
@@ -205,23 +209,23 @@
 " --- }}}
 
 " Vimtex {{{
-  Plug 'lervag/vimtex'
-  let g:tex_conceal = ""
-  let g:vimtex_view_general_viewer
-      \ = '/Applications/Skim.app/Contents/SharedSupport/displayline'
-  let g:vimtex_view_general_options = '-r -g @line @pdf @tex'
-  let g:vimtex_view_general_options_latexmk = '-r -g 1'
-    let g:vimtex_compiler_latexmk = {
-      \ 'background' : 1,
-      \ 'callback' : 1,
-      \ 'continuous' : 0,
-      \ 'executable' : 'latexmk',
-      \ 'options' : [
-      \   '-lualatex',
-      \   '-silent',
-      \   '-synctex=1',
-      \   '-interaction=nonstopmode',
-      \ ]}
+  "Plug 'lervag/vimtex'
+  "let g:tex_conceal = ""
+  "let g:vimtex_view_general_viewer
+      "\ = '/Applications/Skim.app/Contents/SharedSupport/displayline'
+  "let g:vimtex_view_general_options = '-r -g @line @pdf @tex'
+  "let g:vimtex_view_general_options_latexmk = '-r -g 1'
+    "let g:vimtex_compiler_latexmk = {
+      "\ 'background' : 1,
+      "\ 'callback' : 1,
+      "\ 'continuous' : 0,
+      "\ 'executable' : 'latexmk',
+      "\ 'options' : [
+      "\   '-lualatex',
+      "\   '-silent',
+      "\   '-synctex=1',
+      "\   '-interaction=nonstopmode',
+      "\ ]}
 " --- }}}
  
 " Emmet {{{

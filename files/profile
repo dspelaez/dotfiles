@@ -8,27 +8,27 @@ export VISUAL=nvim
 export EDITOR="$VISUAL"
 
 # --- oh-my-zsh ---
-export ZSH_THEME="bureau"
-fpath=(/usr/local/share/zsh-completions $fpath)
+#export ZSH_THEME="bureau"
+#fpath=(/usr/local/share/zsh-completions $fpath)
 
-# --- /usr/local/bin ---
-export PATH=/usr/local/bin:$PATH
-export MANPATH=/usr/local/opt/coreutils/libexec/gnuman:$MANPATH
+## --- /usr/local/bin ---
+#export PATH=/usr/local/bin:$PATH
+#export MANPATH=/usr/local/opt/coreutils/libexec/gnuman:$MANPATH
 
 # --- pyenv ---
-eval "$(pyenv init -)"
+#eval "$(pyenv init -)"
 
 # --- docker ---
 #eval $(docker-machine env default)
 
 # --- anaconda ---
-. $HOME/.miniconda/etc/profile.d/conda.sh
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
-export PYTHONDONTWRITEBYTECODE=1      
+#. $HOME/.miniconda/etc/profile.d/conda.sh
+#export LC_ALL=en_US.UTF-8
+#export LANG=en_US.UTF-8
+#export PYTHONDONTWRITEBYTECODE=1      
 
 # --- gnu coreutils ---
-export PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
+#export PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
 
 # --- cluster-unica ---
 #alias noaa="ssh -x noaa@168.176.120.18"*/
@@ -38,7 +38,7 @@ export PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
 . /usr/local/etc/profile.d/z.sh
 
 # --- tmuxinator ---
-source ~/.dotfiles/tmuxinator.zsh
+#source ~/.dotfiles/tmuxinator.zsh
 
 # --- mensaje del prompt ---
 #if [ -x /usr/local/bin/cowsay -a -x /usr/local/bin/fortune ]; then
