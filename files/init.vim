@@ -7,7 +7,6 @@
 "==================================
 
 " ============================= sintaxis y formato ===================================
-
 " sincronizar rutas de nvim y python {{{
 " ----------------------------------
   set runtimepath+=~/.vim,~/.vim/after
@@ -118,7 +117,6 @@
 
 
 " =============================     plug-ins     ====================================
-
 " vim-plug {{{
   if empty(glob('~/.config/nvim/autoload/plug.vim'))
     silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
@@ -143,6 +141,12 @@
 " --- }}}
 
 " Color-scheme {{{
+  "
+  if empty(glob('~/.config/nvim/pack/themes/opt/solarized8'))
+    silent !git clone https://github.com/lifepillar/vim-solarized8.git
+      \ ~/.config/nvim/pack/themes/opt/solarized8
+  endif
+  "
   Plug 'lifepillar/vim-solarized8'
   if exists('+termguicolors')
     let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
@@ -151,11 +155,6 @@
   endif
   set background=dark
   colorscheme solarized8_flat
-  "
-  if empty(glob('~/.config/nvim/pack/themes/opt/solarized8'))
-    silent !git clone https://github.com/lifepillar/vim-solarized8.git
-      \ ~/.config/nvim/pack/themes/opt/solarized8
-  endif
 " --- }}}
 
 " supertab {{{
