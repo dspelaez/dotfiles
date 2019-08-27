@@ -198,6 +198,7 @@
   let g:vimwiki_list = [{'path': '~/Dropbox/notes/',
                        \ 'syntax': 'markdown', 'ext': '.md'}]
   nmap <Leader>wcr <Plug>VimwikiDiaryGenerateLinks
+
 " --- }}}
 
 " vim instant markdown {{{
@@ -205,7 +206,7 @@
   let g:instant_markdown_slow = 0
   let g:instant_markdown_mathjax = 0
   let g:instant_markdown_autostart = 0
-  map <leader>ll :InstantMarkdownPreview<CR>
+  map <leader>md :InstantMarkdownPreview<CR>
 " --- }}}
 
 " Calendar {{{
@@ -214,23 +215,29 @@
 " --- }}}
 
 " Vimtex {{{
-  "Plug 'lervag/vimtex'
-  "let g:tex_conceal = ""
-  "let g:vimtex_view_general_viewer
-      "\ = '/Applications/Skim.app/Contents/SharedSupport/displayline'
-  "let g:vimtex_view_general_options = '-r -g @line @pdf @tex'
-  "let g:vimtex_view_general_options_latexmk = '-r -g 1'
-    "let g:vimtex_compiler_latexmk = {
-      "\ 'background' : 1,
-      "\ 'callback' : 1,
-      "\ 'continuous' : 0,
-      "\ 'executable' : 'latexmk',
-      "\ 'options' : [
-      "\   '-lualatex',
-      "\   '-silent',
-      "\   '-synctex=1',
-      "\   '-interaction=nonstopmode',
-      "\ ]}
+  Plug 'lervag/vimtex'
+  if has("mac")
+    let g:vimtex_view_general_viewer
+        \ = '/Applications/Skim.app/Contents/SharedSupport/displayline'
+    let g:vimtex_view_general_options = '-r -g @line @pdf @tex'
+    let g:vimtex_view_general_options_latexmk = '-r -g 1'
+  else
+    let g:vimtex_view_method = "zathura"
+    let g:latex_view_general_viewer = "zathura"
+  endif
+  "
+  let g:tex_conceal = ""
+  let g:vimtex_compiler_latexmk = {
+      \ 'background' : 1,
+      \ 'callback' : 1,
+      \ 'continuous' : 0,
+      \ 'executable' : 'latexmk',
+      \ 'options' : [
+      \   '-lualatex',
+      \   '-silent',
+      \   '-synctex=1',
+      \   '-interaction=nonstopmode',
+      \ ]}
 " --- }}}
  
 " Emmet {{{
