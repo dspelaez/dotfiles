@@ -163,7 +163,7 @@
 " --- }}}
 
 " deoplete {{{
-  Plug 'ervandew/supertab'
+  "Plug 'ervandew/supertab'
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   let g:deoplete#enable_at_startup = 1
 " --- }}}
@@ -171,10 +171,7 @@
 " ultisnips  {{{
   Plug 'SirVer/ultisnips'
   Plug 'honza/vim-snippets'
-  "let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-  "let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
   let g:ultisnips_python_style = 'google'
-  "let g:SuperTabDefaultCompletionType = '<C-n>'
   let g:UltiSnipsExpandTrigger='<tab>'
   let g:UltiSnipsJumpForwardTrigger='<tab>'
   let g:UltiSnipsJumpBackwardTrigger='<s-tab>'
