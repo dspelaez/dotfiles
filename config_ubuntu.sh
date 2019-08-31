@@ -147,8 +147,8 @@ install_conda () {
     printf "\n Exiting installation...\n"
     exit 0
   else
-    wget -nc -nv https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
-    bash ./Miniconda3-latest-MacOSX-x86_64.sh -s -b -p $HOME/.miniconda
+    wget -nc -nv https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
+    bash ./Miniconda3-latest-Linux-x86_64.sh -s -b -p $HOME/.miniconda
     $HOME/.miniconda/bin/conda update -n base -c default conda
     # $HOME/.miniconda/bin/conda config --add channels conda-forge
   fi
