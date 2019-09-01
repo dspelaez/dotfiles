@@ -84,8 +84,8 @@
 
 " mapear algunos comandos {{{
 " -----------
-  map mapleader = ","
-  map maplocalleader = ","
+  let mapleader = ","
+  let maplocalleader = ','
   map <Esc><Esc> :w<CR>
   map Q mxgqip`x
 " --- }}}
@@ -172,6 +172,12 @@
   let g:license = "MIT"
 " --- }}}
 
+" supertab {{{
+  Plug 'ervandew/supertab'
+  let g:SuperTabDefaultCompletionType = "<c-n>"
+  let g:SuperTabContextDefaultCompletionType = "<c-n>"
+" --- }}}
+
 " deoplete {{{
   Plug 'ervandew/supertab'
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -199,6 +205,10 @@
   let g:vimwiki_list = [{'path': '~/Dropbox/notes/',
                        \ 'syntax': 'markdown', 'ext': '.md'}]
   nmap <Leader>wcr <Plug>VimwikiDiaryGenerateLinks
+  let g:vimwiki_table_mappings = 0
+  let g:vimwiki_global_ext = 0
+  nmap <c-k> <Plug>VimwikiNextLink
+  nmap <c-j> <Plug>VimwikiPrevLink
 
 " --- }}}
 
