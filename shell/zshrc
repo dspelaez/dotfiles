@@ -98,6 +98,7 @@ source $ZSH/oh-my-zsh.sh
 export EDITOR="nvim"
 alias notes="$EDITOR $HOME/Dropbox/notes/index.md"
 alias zshrc="$EDITOR $HOME/.zshrc"
+alias mux="tmuxinator"
 alias nvimrc="nvim $HOME/.config/nvim/init.vim"
 alias weather="curl v2.wttr.in"
 alias open="xdg-open"

@@ -1,0 +1,12 @@
+# /home/danielsantiago/.config/tmuxinator/blog.yml
+
+name: blog
+root: ~/Dropbox/blog/dspelaez.github.io/
+
+windows:
+  - jekyll:
+      layout: main-vertical
+      panes:
+        - vim
+        - clear
+        - jekyll serve
