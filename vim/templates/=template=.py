@@ -8,6 +8,6 @@ File: %FFILE%
 Author: %USER%
 Mail: %MAIL%
 Github: http://github.com/dspelaez
-Description: %HERE%
 """
 
+%HERE%

@@ -81,9 +81,11 @@
 "clear highlight in the last search {{{
   nnoremap <CR> :noh<CR>
 " --- }}}
-"
+
 " mapear algunos comandos {{{
 " -----------
+  map mapleader = ","
+  map maplocalleader = ","
   map <Esc><Esc> :w<CR>
   map Q mxgqip`x
 " --- }}}
@@ -161,8 +163,17 @@
   colorscheme solarized8_flat
 " --- }}}
 
+" vim-templates {{{
+  Plug 'aperezdc/vim-template'
+  let g:templates_no_builtin_templates = 1
+  let g:templates_directory = "~/.config/nvim/templates"
+  let g:username = "Daniel Santiago"
+  let g:email = "dspelaez@gmail.com"
+  let g:license = "MIT"
+" --- }}}
+
 " deoplete {{{
-  "Plug 'ervandew/supertab'
+  Plug 'ervandew/supertab'
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   let g:deoplete#enable_at_startup = 1
 " --- }}}
@@ -231,7 +242,7 @@
 " --- }}}
  
 " emmet {{{
-  Plug 'mattn/emmet-vim'
+  "Plug 'mattn/emmet-vim'
 " --- }}}
 
 " all of your plugs must be added before the following line
