@@ -102,7 +102,7 @@ alias mux="tmuxinator"
 alias nvimrc="nvim $HOME/.config/nvim/init.vim"
 alias weather="curl v2.wttr.in"
 alias rmdsstore="find . -name '.DS_Store' -type f -delete"
-if [ `uname -s` == "Darwiind" ]; then
+if [[ "$(uname)" == "Linux" ]]; then
   alias open="xdg-open"
 fi
 
@@ -120,4 +120,8 @@ export LANG=en_US.UTF-8
 export PYTHONDONTWRITEBYTECODE=1      
 
 # gnu coreutils (mac only)
-#export PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
+if [[ "$(uname)" == "Darwin" ]]; then
+  export PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
+fi
+
+# --- end of file ---
