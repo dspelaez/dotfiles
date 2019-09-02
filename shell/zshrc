@@ -101,8 +101,10 @@ alias zshrc="$EDITOR $HOME/.zshrc"
 alias mux="tmuxinator"
 alias nvimrc="nvim $HOME/.config/nvim/init.vim"
 alias weather="curl v2.wttr.in"
-alias open="xdg-open"
 alias rmdsstore="find . -name '.DS_Store' -type f -delete"
+if [ `uname -s` == "Darwiind" ]; then
+  alias open="xdg-open"
+fi
 
 # Avoid the ugly green highligh in the some
 # dirs with others write access
