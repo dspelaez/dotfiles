@@ -108,7 +108,7 @@ fi
 
 # Avoid the ugly green highligh in the some
 # dirs with others write access
-export LS_COLORS="$LS_COLORS:ow=1;34:tw=1;34:"
+# export LS_COLORS="$LS_COLORS:ow=1;34:tw=1;34:"
 
 # configuration of z pogram
 #. /usr/local/etc/profile.d/z.sh

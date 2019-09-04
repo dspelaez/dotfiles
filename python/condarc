@@ -1,1 +1,6 @@
 auto_activate_base: false
+channels:
+  - conda-forge
+  - defaults
+create_default_packages:
+  - ipython
