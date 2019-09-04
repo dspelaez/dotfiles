@@ -27,6 +27,6 @@ ln -sf $DOTFILES/tmux/tmuxinator $CONFIG/
 # vim
 ln -sf $DOTFILES/vim/init.vim $CONFIG/nvim/init.vim
 ln -sf $DOTFILES/vim/spell $CONFIG/nvim/spell
-ln -sf $DOTFILES/vim/templates $CONFIG/nvim/templates
-ln -sf $DOTFILES/vim/ultisnips $CONFIG/nvim/ultisnips
+ln -sf $DOTFILES/vim/templates $CONFIG/nvim/
+ln -sf $DOTFILES/vim/ultisnips $CONFIG/nvim/
 
