@@ -1,10 +1,10 @@
-"==================================
-"    Nombre:     $HOME/.config/nvim/init.vim
-"    Autor:      Daniel Santiago
-"    Github:     dspelaez/dotfiles
-"    Fecha:      2015-05-05
-"    Modificado: 2019-08-26
-"==================================
+"========================================
+" @file:    $HOME/.config/nvim/init.vim
+" @author:  Daniel Santiago
+" @github:  dspelaez/dotfiles
+" @created: 2015-05-05
+" @updated: 2019-08-26
+"=========================================
 
 " ============================= sintaxis y formato ===================================
 " sincronizar rutas de nvim y python {{{
@@ -198,6 +198,10 @@
 
 " tabular {{{
   Plug 'godlygeek/tabular'
+" --- }}}
+
+" goyo {{{
+  Plug 'junegunn/goyo.vim'
 " --- }}}
 
 " vimwiki {{{
