@@ -241,6 +241,7 @@
     let g:latex_view_general_viewer = "zathura"
   endif
   "
+  let g:tex_comment_nospell = 1
   let g:tex_conceal = ""
   let g:vimtex_compiler_latexmk = {
       \ 'background' : 1,
