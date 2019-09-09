@@ -1,13 +1,14 @@
 #! /usr/bin/env python
-#
-# Copyright © %YEAR% %USER% <%MAIL%>
-# Distributed under terms of the %LICENSE% license.
+# -*- coding: utf-8 -*-
+# vim:fenc=utf-8
 
 """
-File: %FFILE%
-Author: %USER%
-Mail: %MAIL%
-Github: http://github.com/dspelaez
+Copyright © %YEAR% %USER% <%MAIL%>
+Distributed under terms of the %LICENSE% license.
+
+@author: %USER%
+@created: %DATE%
+@github: %MAIL%
 """
 
 %HERE%

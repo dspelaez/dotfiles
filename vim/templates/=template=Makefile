@@ -1,11 +1,16 @@
+#! /bin/sh
 #
-# %FFILE%
-# %USER%, %FDATE%
+# ==================================================================
+# Copyright (C) %YEAR% %USER% <%MAIL%>
+# Distributed under terms of the %LICENSE% license.
 #
+# @author: %USER%
+# @github: %MAIL%
+# @created: %DATE%
+# ==================================================================
 
 all:
 	%HERE%@echo "%FFILE% needs your attention"
 
 
 # vim:ft=make
-#

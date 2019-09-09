@@ -168,8 +168,8 @@
   let g:templates_no_builtin_templates = 1
   let g:templates_directory = "~/.config/nvim/templates"
   let g:username = "Daniel Santiago"
-  let g:email = "dspelaez@gmail.com"
-  let g:license = "MIT"
+  let g:email = "http://github.com/dspelaez"
+  let g:license = "GNU/GPL 3.0"
 " --- }}}
 
 " supertab {{{
