@@ -224,6 +224,13 @@
   map <leader>md :InstantMarkdownPreview<CR>
 " --- }}}
 
+" vim-markdown {{{
+  Plug 'plasticboy/vim-markdown'
+  let g:vim_markdown_math = 1
+  let g:vim_markdown_frontmatter = 1
+  let g:vim_markdown_folding_disabled = 1
+"--- }}}
+
 " calendar {{{
   Plug 'itchyny/calendar.vim'
   let g:calendar_google_calendar = 1
