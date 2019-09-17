@@ -1,0 +1,17 @@
+# /home/danielsantiago/.config/tmuxinator/papers.yml
+
+name: papers
+root: ~/Workspace/repos/papers
+
+windows:
+  - editor:
+      layout: even-horizontal
+      panes:
+        - clear
+        - conda activate papers && clear
+  - shell:
+      layout: main-vertical
+      panes:
+        - 
+        - 
+        - 
