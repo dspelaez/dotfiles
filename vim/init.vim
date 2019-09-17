@@ -257,7 +257,7 @@
 " --- }}}
  
 " emmet {{{
-  "Plug 'mattn/emmet-vim'
+  Plug 'mattn/emmet-vim'
 " --- }}}
 
 " all of your plugs must be added before the following line
