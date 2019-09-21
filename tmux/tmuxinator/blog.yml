@@ -7,6 +7,6 @@ windows:
   - jekyll:
       layout: main-vertical
       panes:
-        - vim
+        - clear
         - clear
         - jekyll serve
