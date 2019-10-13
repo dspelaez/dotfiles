@@ -38,7 +38,7 @@
 #
 # If you omit this parameter, it will always default to "Agg", which is a
 # non-interactive backend.
-backend      : MacOSX
+#backend      : MacOSX
 
 # If you are using the Qt4Agg backend, you can choose here
 # to use the PyQt4 bindings or the newer PySide bindings to
@@ -206,7 +206,7 @@ font.family         : serif
 # relative to font.size, using the following values: xx-small, x-small,
 # small, medium, large, x-large, xx-large, larger, or smaller
 font.size           : 10.0
-font.serif          : Times New Roman, Times, DejaVu Serif, Bitstream Vera Serif, New Century Schoolbook, Century Schoolbook L, Utopia, ITC Bookman, Bookman, Nimbus Roman No9 L, Times New Roman, Times, Palatino, Charter, serif
+#font.serif          : Times New Roman, Times, DejaVu Serif, Bitstream Vera Serif, New Century Schoolbook, Century Schoolbook L, Utopia, ITC Bookman, Bookman, Nimbus Roman No9 L, Times New Roman, Times, Palatino, Charter, serif
 #font.sans-serif     : DejaVu Sans, Bitstream Vera Sans, Lucida Grande, Verdana, Geneva, Lucid, Arial, Helvetica, Avant Garde, sans-serif
 #font.cursive        : Apple Chancery, Textile, Zapf Chancery, Sand, Script MT, Felipa, cursive
 #font.fantasy        : Comic Sans MS, Chicago, Charcoal, Impact, Western, Humor Sans, xkcd, fantasy
@@ -360,39 +360,39 @@ axes.prop_cycle    : cycler('color', ['1f77b4', 'ff7f0e', 'd62728', '8c564b', 'e
 
 ### TICKS
 # see http://matplotlib.org/api/axis_api.html#matplotlib.axis.Tick
-xtick.top            : True   # draw ticks on the top side
-xtick.bottom         : True   # draw ticks on the bottom side
-xtick.major.size     : 3.5      # major tick size in points
-xtick.minor.size     : 2.0    # minor tick size in points
-xtick.major.width    : 1.0    # major tick width in points
-xtick.minor.width    : 1.0    # minor tick width in points
-xtick.major.pad      : 3.5      # distance to major tick label in points
-xtick.minor.pad      : 3.4      # distance to the minor tick label in points
-xtick.color          : k      # color of the tick labels
-xtick.labelsize      : medium # fontsize of the tick labels
-xtick.direction      : in    # direction: in, out, or inout
-xtick.minor.visible  : False  # visibility of minor ticks on x-axis
-xtick.major.top      : True   # draw x axis top major ticks
-xtick.major.bottom   : True   # draw x axis bottom major ticks
-xtick.minor.top      : True   # draw x axis top minor ticks
-xtick.minor.bottom   : True   # draw x axis bottom minor ticks
+#xtick.top            : True   # draw ticks on the top side
+#xtick.bottom         : True   # draw ticks on the bottom side
+#xtick.major.size     : 3.5      # major tick size in points
+#xtick.minor.size     : 2.0    # minor tick size in points
+#xtick.major.width    : 1.0    # major tick width in points
+#xtick.minor.width    : 1.0    # minor tick width in points
+#xtick.major.pad      : 3.5      # distance to major tick label in points
+#xtick.minor.pad      : 3.4      # distance to the minor tick label in points
+#xtick.color          : k      # color of the tick labels
+#xtick.labelsize      : medium # fontsize of the tick labels
+#xtick.direction      : in    # direction: in, out, or inout
+#xtick.minor.visible  : False  # visibility of minor ticks on x-axis
+#xtick.major.top      : True   # draw x axis top major ticks
+#xtick.major.bottom   : True   # draw x axis bottom major ticks
+#xtick.minor.top      : True   # draw x axis top minor ticks
+#xtick.minor.bottom   : True   # draw x axis bottom minor ticks
 
-ytick.left           : True   # draw ticks on the left side
-ytick.right          : True  # draw ticks on the right side
-ytick.major.size     : 3.5      # major tick size in points
-ytick.minor.size     : 2.0    # minor tick size in points
-ytick.major.width    : 1.0    # major tick width in points
-ytick.minor.width    : 1.0    # minor tick width in points
-ytick.major.pad      : 3.5      # distance to major tick label in points
-ytick.minor.pad      : 3.4      # distance to the minor tick label in points
-ytick.color          : k      # color of the tick labels
-ytick.labelsize      : medium # fontsize of the tick labels
-ytick.direction      : in    # direction: in, out, or inout
-ytick.minor.visible  : False  # visibility of minor ticks on y-axis
-ytick.major.left     : True   # draw y axis left major ticks
-ytick.major.right    : True   # draw y axis right major ticks
-ytick.minor.left     : True   # draw y axis left minor ticks
-ytick.minor.right    : True   # draw y axis right minor ticks
+#ytick.left           : True   # draw ticks on the left side
+#ytick.right          : True  # draw ticks on the right side
+#ytick.major.size     : 3.5      # major tick size in points
+#ytick.minor.size     : 2.0    # minor tick size in points
+#ytick.major.width    : 1.0    # major tick width in points
+#ytick.minor.width    : 1.0    # minor tick width in points
+#ytick.major.pad      : 3.5      # distance to major tick label in points
+#ytick.minor.pad      : 3.4      # distance to the minor tick label in points
+#ytick.color          : k      # color of the tick labels
+#ytick.labelsize      : medium # fontsize of the tick labels
+#ytick.direction      : in    # direction: in, out, or inout
+#ytick.minor.visible  : False  # visibility of minor ticks on y-axis
+#ytick.major.left     : True   # draw y axis left major ticks
+#ytick.major.right    : True   # draw y axis right major ticks
+#ytick.minor.left     : True   # draw y axis left minor ticks
+#ytick.minor.right    : True   # draw y axis right minor ticks
 
 
 ### GRIDS
