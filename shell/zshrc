@@ -124,4 +124,13 @@ if [[ "$(uname)" == "Darwin" ]]; then
   export PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
 fi
 
+# pubs autocompletion
+# Enable and load bashcompinit
+export PATH=$HOME/.local/bin:$PATH
+autoload -Uz compinit bashcompinit
+compinit
+bashcompinit
+# Argcomplete explicit registration for pubs
+eval "$(register-python-argcomplete pubs)"
+
 # --- end of file ---

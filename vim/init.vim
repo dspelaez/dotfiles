@@ -9,8 +9,8 @@
 " ============================= sintaxis y formato ===================================
 " sincronizar rutas de nvim y python {{{
 " ----------------------------------
-  set runtimepath+=~/.vim,~/.vim/after
-  set packpath+=~/.vim
+  "set runtimepath+=~/.vim,~/.vim/after
+  "set packpath+=~/.config/nvim/plugged
 
   let g:loaded_python_provider = 1
   let g:python3_host_prog=expand('~/.miniconda/envs/neovim/bin/python')
@@ -18,15 +18,14 @@
 
 " habilitar sintaxis y numeros de lineas {{{
 " ---------------------------------------
+  syntax enable
   set relativenumber
   set number
-  syntax enable
   set noshowmode
   set laststatus=2
   set showtabline=2
   set guioptions-=e
   set noswapfile
-  "highlight Comment cterm=italic
 " --- }}}
 
 " configurar indentado {{{
@@ -38,6 +37,7 @@
 
 " configurar columnas {{{
 " -------------------
+  set signcolumn=yes
   set textwidth=80
   let &colorcolumn=join(range(90,90),",")
   highlight ColorColumn ctermbg=15 guibg=lightgrey
@@ -130,29 +130,38 @@
   endif
 
   call plug#begin('~/.config/nvim/plugged')"
-" --- }}}
 
-" nerd-tree {{{
+  Plug 'lifepillar/vim-solarized8'
   Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-  map <C-n> :NERDTreeToggle<CR>
-" --- }}}
-
-" nerd-commenter {{{
   Plug 'scrooloose/nerdcommenter'
-" --- }}}
-
-" lightline {{{
   Plug 'itchyny/lightline.vim'
+  Plug 'ryanoasis/vim-devicons'
+  Plug 'aperezdc/vim-template'
+  Plug 'ervandew/supertab'
+  Plug 'ervandew/supertab'
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'SirVer/ultisnips'
+  Plug 'honza/vim-snippets'
+  Plug 'godlygeek/tabular'
+  Plug 'junegunn/goyo.vim'
+  Plug 'ledger/vim-ledger'
+  Plug 'vimwiki/vimwiki'
+  Plug 'plasticboy/vim-markdown'
+  Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+  Plug 'itchyny/calendar.vim'
+  Plug 'lervag/vimtex'
+  Plug 'mattn/emmet-vim'
+
+" all of your plugs must be added before the following line
+  call plug#end()
 " --- }}}
 
 " color-scheme {{{
-  "
   if empty(glob('~/.config/nvim/pack/themes/opt/solarized8'))
     silent !git clone https://github.com/lifepillar/vim-solarized8.git
       \ ~/.config/nvim/pack/themes/opt/solarized8
   endif
-  "
-  Plug 'lifepillar/vim-solarized8'
+  
   if exists('+termguicolors')
     let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
     let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
@@ -162,8 +171,11 @@
   colorscheme solarized8_flat
 " --- }}}
 
+" nerd-tree {{{
+  map <C-n> :NERDTreeToggle<CR>
+" --- }}}
+
 " vim-templates {{{
-  Plug 'aperezdc/vim-template'
   let g:templates_no_builtin_templates = 1
   let g:templates_directory = "~/.config/nvim/templates"
   let g:username = "Daniel Santiago"
@@ -172,20 +184,15 @@
 " --- }}}
 
 " supertab {{{
-  Plug 'ervandew/supertab'
   let g:SuperTabDefaultCompletionType = "<c-n>"
   let g:SuperTabContextDefaultCompletionType = "<c-n>"
 " --- }}}
 
 " deoplete {{{
-  Plug 'ervandew/supertab'
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   let g:deoplete#enable_at_startup = 1
 " --- }}}
 
 " ultisnips  {{{
-  Plug 'SirVer/ultisnips'
-  Plug 'honza/vim-snippets'
   let g:UltiSnipsEditSplit = 'tabdo'
   let g:ultisnips_python_style = 'google'
   let g:UltiSnipsExpandTrigger = '<tab>'
@@ -195,16 +202,7 @@
 
 " --- }}}
 
-" tabular {{{
-  Plug 'godlygeek/tabular'
-" --- }}}
-
-" goyo {{{
-  Plug 'junegunn/goyo.vim'
-" --- }}}
-
 " vimwiki {{{
-  Plug 'vimwiki/vimwiki'
   let g:vimwiki_list = [{'path': '~/Dropbox/notes/',
                        \ 'syntax': 'markdown', 'ext': '.md'}]
   nmap <Leader>wcr <Plug>VimwikiDiaryGenerateLinks
@@ -215,28 +213,21 @@
 
 " --- }}}
 
-" vim-instant-markdown {{{
-  Plug 'suan/vim-instant-markdown'
-  let g:instant_markdown_slow = 0
-  let g:instant_markdown_mathjax = 0
-  let g:instant_markdown_autostart = 0
-  map <leader>md :InstantMarkdownPreview<CR>
+" markdown-preview {{{
+  map <leader>md <Plug>MarkdownPreview
 " --- }}}
 
 " vim-markdown {{{
-  Plug 'plasticboy/vim-markdown'
   let g:vim_markdown_math = 1
   let g:vim_markdown_frontmatter = 1
   let g:vim_markdown_folding_disabled = 1
 "--- }}}
 
 " calendar {{{
-  Plug 'itchyny/calendar.vim'
   let g:calendar_google_calendar = 1
 " --- }}}
 
 " vimtex {{{
-  Plug 'lervag/vimtex'
   if has("mac")
     let g:vimtex_view_general_viewer
         \ = '/Applications/Skim.app/Contents/SharedSupport/displayline'
@@ -261,13 +252,4 @@
       \   '-interaction=nonstopmode',
       \ ]}
 " --- }}}
- 
-" emmet {{{
-  Plug 'mattn/emmet-vim'
-" --- }}}
-
-" all of your plugs must be added before the following line
-  call plug#end()
-
 " =============================   end of file   ====================================
-
