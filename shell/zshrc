@@ -110,9 +110,6 @@ fi
 # dirs with others write access
 # export LS_COLORS="$LS_COLORS:ow=1;34:tw=1;34:"
 
-# configuration of z pogram
-#. /usr/local/etc/profile.d/z.sh
-
 # miniconda initialization
 . $HOME/.miniconda/etc/profile.d/conda.sh
 export LC_ALL=en_US.UTF-8
