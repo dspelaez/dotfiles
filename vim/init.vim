@@ -101,7 +101,7 @@
 
 " python files {{{
 " ------------
-  autocmd FileType py set foldmethod=marker
+  autocmd FileType py set foldmethod=marker shiftwidth=2 softtabstop=2
 " --- }}}
 
 " bibtex files {{{
