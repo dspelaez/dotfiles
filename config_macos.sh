@@ -61,6 +61,7 @@ install_homebrew () {
     vim
     neovim
     tmux
+    tmuxinator
     imagemagick
     pandoc
     markdown
@@ -84,18 +85,14 @@ install_homebrew () {
   # 3.4. install some casks
   # -------------------------------
   apps=(
-    brave   
-    google-drive-file-stream
+    brave-browser
     skim
     spotify
     dropbox
     docker
-    skype
     iterm2
-    xquartz
     inkscape
     mactex
-    zoomus
     )
 
   printf "\nThe following casks will be installed\n"
@@ -117,7 +114,6 @@ install_homebrew () {
 # 3. install conda {{{
 # ===============================
 install_conda () {
-  clear
   # TODO: Better ask for installing miniconda or anaconda
   printf "\nInstalling Miniconda? [y/n] "; read OK
   if [ "$OK" != "Y" ] && [ "$OK" != "y" ]
@@ -136,14 +132,20 @@ install_conda () {
 # 4. change default shell by zsh {{{
 # ===============================
 config_zsh () {
-  printf "\nInstalling oh-my-zsh?\n"
-  #
-  # download ohmyzsh
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-  #
-  # add .profile to .zshrc
-  echo "" >> $HOME/.zshrc
-  echo "source $HOME/.profile" >> $HOME/.zshrc
+  printf "\nInstalling Oh-my-zsh? [y/n] "; read OK
+  if [ "$OK" != "Y" ] && [ "$OK" != "y" ]
+  then
+    printf "\n Exiting installation...\n"
+    exit 0
+  else
+    #
+    # download ohmyzsh
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+    #
+    # add .profile to .zshrc
+    echo "" >> $HOME/.zshrc
+    echo "source $HOME/.profile" >> $HOME/.zshrc
+  fi
 }
 # --- }}}
 
@@ -157,10 +159,6 @@ copy_dotfiles () {
     exit 0
   else
     #
-    # git configuration
-    git config --global user.name "Daniel Santiago"
-    git config --global user.email dspelaez@gmail.com
-    #
     # clone repository and copy files to $HOME
     rm -rf $HOME/dotfiles
     git clone https://github.com/dspelaez/dotfiles.git
@@ -168,6 +166,7 @@ copy_dotfiles () {
     #
     # make symbolic links
     sh ./symlink.sh
+    cd $HOME
   fi
 }
 # --- }}}
@@ -175,25 +174,34 @@ copy_dotfiles () {
 # 6. config neovim and tmux {{{
 # ==============================
 config_vim () {
+  printf "\nConfig neovim? [y/n] "; read OK
+  if [ "$OK" != "Y" ] && [ "$OK" != "y" ]
+  then
+    printf "\n Exiting installation...\n"
+    exit 0
+  else
+    #
+    # create virtual environment including neovim and jedi
+    # TODO: include flake8 or pylint or something
+    printf "\nCreating virtual environment for neovim\n";
+    $HOME/.miniconda/bin/conda create -n neovim python=3.8
+    $HOME/.miniconda/bin/conda install -c conda-forge -n neovim neovim jedi unidecode
 
-  # create virtual environment including neovim and jedi
-  # TODO: include flake8 or pylint or something
-  printf "\nCreating virtual environment for neovim\n";
-  $HOME/.miniconda/bin/conda create -n neovim python=3.8
-  $HOME/.miniconda/bin/conda install -c conda-forge -n neovim neovim jedi unidecode
+    # config neovim and vim
+    nvim +PlugInstall +PlugUpgrade +PlugUpdate +PlugClean! +UpdateRemotePlugins +qall
+    vim +PlugInstall +PlugUpgrade +PlugUpdate +PlugClean! +UpdateRemotePlugins +qall
+  fi
 
-  # config neovim and vim
-  nvim +PlugInstall +PlugUpgrade +PlugUpdate +PlugClean! +UpdateRemotePlugins +qall
-  vim +PlugInstall +PlugUpgrade +PlugUpdate +PlugClean! +UpdateRemotePlugins +qall
-
-  # config tmux
-  # TODO: install tmuxinator (using brew or gem)
-  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-  tmux source $HOME/.tmux.conf
-
-  # install some fonts
-  brew tap caskroom/fonts
-  brew cask install font-source-code-pro font-inconsolata
+  printf "\nConfig tmux & tmuxinator? [y/n] "; read OK
+  if [ "$OK" != "Y" ] && [ "$OK" != "y" ]
+  then
+    printf "\n Exiting installation...\n"
+    exit 0
+  else
+    # config tmux
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+    tmux source $HOME/.tmux.conf
+  fi
 }
 # --- }}}
 

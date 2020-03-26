@@ -1,6 +1,9 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+# Disable security check in Catalina OS
+ZSH_DISABLE_COMPFIX=true
+
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -123,11 +126,11 @@ fi
 
 # pubs autocompletion
 # Enable and load bashcompinit
-export PATH=$HOME/.local/bin:$PATH
-autoload -Uz compinit bashcompinit
-compinit
-bashcompinit
-# Argcomplete explicit registration for pubs
-eval "$(register-python-argcomplete pubs)"
+#export PATH=$HOME/.local/bin:$PATH
+#autoload -Uz compinit bashcompinit
+#compinit
+#bashcompinit
+## Argcomplete explicit registration for pubs
+#eval "$(register-python-argcomplete pubs)"
 
 # --- end of file ---
