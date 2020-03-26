@@ -118,6 +118,8 @@ fi
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export PYTHONDONTWRITEBYTECODE=1      
+#export PYTHONUSERBASE="$HOME/.local/"
+#export PATH=$PYTHONUSERBASE:$PATH
 
 # gnu coreutils (mac only)
 if [[ "$(uname)" == "Darwin" ]]; then
@@ -126,7 +128,6 @@ fi
 
 # pubs autocompletion
 # Enable and load bashcompinit
-#export PATH=$HOME/.local/bin:$PATH
 #autoload -Uz compinit bashcompinit
 #compinit
 #bashcompinit
