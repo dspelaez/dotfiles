@@ -22,6 +22,7 @@ ln -sf $DOTFILES/python/matplotlibrc $CONFIG/matplotlib/matplotlibrc
 # shell
 ln -sf $DOTFILES/shell/gitconfig $HOME/.gitconfig
 ln -sf $DOTFILES/shell/zshrc $HOME/.zshrc
+ln -sf $DOTFILES/shell/starship.toml $CONFIG/starship.toml
 
 # vim
 ln -sf $DOTFILES/vim/init.vim $CONFIG/nvim/init.vim
@@ -32,5 +33,3 @@ ln -sf $DOTFILES/vim/ultisnips $CONFIG/nvim/
 # tmux
 ln -sf $DOTFILES/tmux/tmux.conf $HOME/.tmux.conf
 ln -sf $DOTFILES/tmux/tmuxinator $CONFIG/
-
-

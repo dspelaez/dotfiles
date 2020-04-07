@@ -89,6 +89,8 @@ install_homebrew () {
     skim
     spotify
     dropbox
+    google-backup-and-sync
+    google-drive-file-stream
     docker
     iterm2
     inkscape
@@ -139,12 +141,10 @@ config_zsh () {
     exit 0
   else
     #
-    # download ohmyzsh
+    # download oh-my-zsh and spaceship
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+    curl -fsSL https://starship.rs/install.sh | bash
     #
-    # add .profile to .zshrc
-    echo "" >> $HOME/.zshrc
-    echo "source $HOME/.profile" >> $HOME/.zshrc
   fi
 }
 # --- }}}
