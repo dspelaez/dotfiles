@@ -15,7 +15,7 @@ symbol = "[aws] "
 [battery]
 full_symbol = ""
 charging_symbol = ""
-discharging_symbol = ""
+discharging_symbol = "[battery] "
 
 [conda]
 symbol = "[conda] "

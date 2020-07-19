@@ -10,14 +10,14 @@ DOTFILES=$HOME/.dotfiles
 CONFIG=$HOME/.config
 
 #mkdir -p $CONFIG/{matplotlib,nvim/{spell,templates,ultisnips},tmuxinator}
-mkdir -p $CONFIG/{matplotlib,nvim}
+mkdir -p $CONFIG/nvim $HOME/.matplotlib
 
 # latex
 ln -sf $DOTFILES/latex/latexmkrc $HOME/.latexmkrc
 
 # python 
 ln -sf $DOTFILES/python/condarc $HOME/.condarc
-ln -sf $DOTFILES/python/matplotlibrc $CONFIG/matplotlib/matplotlibrc
+ln -sf $DOTFILES/python/matplotlibrc $HOME/.matplotlib/matplotlibrc
 
 # shell
 ln -sf $DOTFILES/shell/gitconfig $HOME/.gitconfig

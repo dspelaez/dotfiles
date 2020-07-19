@@ -58,6 +58,7 @@ install_homebrew () {
     wget 
     git
     coreutils
+    gcc
     vim
     neovim
     tmux

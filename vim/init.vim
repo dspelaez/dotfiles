@@ -6,7 +6,7 @@
 " @updated: 2019-08-26
 "=========================================
 
-" ============================= sintaxis y formato ===================================
+" ========================== sintaxis y formato ================================
 " sincronizar rutas de nvim y python {{{
 " ----------------------------------
   "set runtimepath+=~/.vim,~/.vim/after
@@ -39,7 +39,7 @@
 " -------------------
   set signcolumn=yes
   set textwidth=80
-  let &colorcolumn=join(range(90,90),",")
+  let &colorcolumn=join(range(85,85),",")
   highlight ColorColumn ctermbg=15 guibg=lightgrey
 " --- }}}
 
@@ -91,7 +91,7 @@
 " --- }}}
 
 
-" ============================= tipos de archivo ====================================
+" ========================== tipos de archivo =================================
 " text files {{{
 " ----------
   filetype plugin on
@@ -121,7 +121,7 @@
 " --- }}}
 
 
-" =============================     plug-ins     ====================================
+" ==========================     plug-ins     =================================
 " vim-plug {{{
   if empty(glob('~/.config/nvim/autoload/plug.vim'))
     silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
@@ -132,16 +132,14 @@
   call plug#begin('~/.config/nvim/plugged')"
 
   Plug 'lifepillar/vim-solarized8'
-  Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
   Plug 'scrooloose/nerdcommenter'
+  Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   Plug 'itchyny/lightline.vim'
-  Plug 'ryanoasis/vim-devicons'
+  Plug 'honza/vim-snippets'
   Plug 'aperezdc/vim-template'
   Plug 'ervandew/supertab'
-  Plug 'ervandew/supertab'
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   Plug 'SirVer/ultisnips'
-  Plug 'honza/vim-snippets'
   Plug 'godlygeek/tabular'
   Plug 'junegunn/goyo.vim'
   Plug 'ledger/vim-ledger'
@@ -205,7 +203,7 @@
 " vimwiki {{{
   let g:vimwiki_list = [{'path': '~/Dropbox/notes/',
                        \ 'syntax': 'markdown', 'ext': '.md'}]
-  nmap <Leader>wcr <Plug>VimwikiDiaryGenerateLinks
+  nmap <Leader>wgl <Plug>VimwikiDiaryGenerateLinks
   let g:vimwiki_table_mappings = 0
   let g:vimwiki_global_ext = 0
   nmap <c-k> <Plug>VimwikiNextLink
@@ -215,17 +213,17 @@
 
 " markdown-preview {{{
   map <leader>md <Plug>MarkdownPreview
+  let g:mkdp_refresh_slow = 0
+  let g:mkdp_page_title = '${name}'
 " --- }}}
 
 " vim-markdown {{{
   let g:vim_markdown_math = 1
   let g:vim_markdown_frontmatter = 1
   let g:vim_markdown_folding_disabled = 1
+  let g:vim_markdown_auto_insert_bullets = 0
+  let g:vim_markdown_new_list_item_indent = 0
 "--- }}}
-
-" calendar {{{
-  let g:calendar_google_calendar = 1
-" --- }}}
 
 " vimtex {{{
   if has("mac")
@@ -252,4 +250,11 @@
       \   '-interaction=nonstopmode',
       \ ]}
 " --- }}}
-" =============================   end of file   ====================================
+
+" hledger {{{
+  au BufNewFile,BufRead *.journal.md,*.ledger setf ledger | comp ledger
+  let g:ledger_maxwidth = 60
+  let g:ledger_fold_blanks = 1
+" }}}
+
+" ==========================   end of file   =================================
