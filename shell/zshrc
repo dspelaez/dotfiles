@@ -138,4 +138,7 @@ bashcompinit
 # Argcomplete explicit registration for pubs
 eval "$(register-python-argcomplete pubs)"
 
+# eval environmental variables
+source $HOME/.secrets
+
 # --- end of file ---

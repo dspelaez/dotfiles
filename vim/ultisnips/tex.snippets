@@ -138,10 +138,10 @@ snippet // "Fraction" iA
 \\frac{$1}{$2}$0
 endsnippet
 
-context "math()"
-snippet '((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)/' "symbol frac" wrA
-\\frac{`!p snip.rv = match.group(1)`}{$1}$0
-endsnippet
+#context "math()"
+#snippet '((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)/' "symbol frac" wrA
+#\\frac{`!p snip.rv = match.group(1)`}{$1}$0
+#endsnippet
 
 priority 1000
 context "math()"
@@ -228,7 +228,7 @@ snippet bmat "bmat" iA
 endsnippet
 
 context "math()"
-snippet () "left( right)" iA
+snippet (( "left( right)" iA
 \left( ${1:${VISUAL}} \right) $0
 endsnippet
 

@@ -1,13 +1,13 @@
 #! /bin/sh
 #
 # config.sh
-# Copyright (C) 2018 Daniel Santiago <dspelaez@gmail.com>
+# Copyright (C) 2018 Daniel Santiago <dspelaez@gmail>
 #
 # Distributed under terms of the GNU/GPL license.
 #
 
 # ===================================================================
-#   Setting up OSX for scientific use
+#   Setting up Ubuntu for scientific use
 # -------------------------------------------------------------------
 #
 #   Usage:
@@ -19,18 +19,6 @@
 #     github/dspelaez
 # ===================================================================
 
-
-# steps
-# =====
-
-# 1. install porgrams
-#sudo apt update -y
-#sudo apt upgrade -y
-
-#sudo apt install wget git vim neovim tmux minicom imagemagick pandoc htop ffmpeg
-#nodejs
-
-#2. install conda
 
 
 # 1. install xcode {{{
@@ -70,22 +58,16 @@ install_homebrew () {
     wget 
     git
     coreutils
+    gcc
     vim
     neovim
     tmux
-    z
-    fortune
-    cowsay
-    ranger
-    minicom
+    tmuxinator
     imagemagick
     pandoc
     markdown
-    syncthing
     htop
     ffmpeg
-    reattach-to-user-namespace
-    m4
     node
     )
 
@@ -104,18 +86,14 @@ install_homebrew () {
   # 3.4. install some casks
   # -------------------------------
   apps=(
-    firefox   
-    google-chrome
-    google-drive-file-stream
-    google-earth-pro
+    brave-browser
     skim
-    jabref
     spotify
     dropbox
+    google-backup-and-sync
+    google-drive-file-stream
     docker
-    skype
     iterm2
-    xquartz
     inkscape
     mactex
     )
@@ -139,7 +117,6 @@ install_homebrew () {
 # 3. install conda {{{
 # ===============================
 install_conda () {
-  clear
   # TODO: Better ask for installing miniconda or anaconda
   printf "\nInstalling Miniconda? [y/n] "; read OK
   if [ "$OK" != "Y" ] && [ "$OK" != "y" ]
@@ -147,15 +124,33 @@ install_conda () {
     printf "\n Exiting installation...\n"
     exit 0
   else
-    wget -nc -nv https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
-    bash ./Miniconda3-latest-Linux-x86_64.sh -s -b -p $HOME/.miniconda
+    wget -nc -nv https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
+    bash ./Miniconda3-latest-MacOSX-x86_64.sh -s -b -p $HOME/.miniconda
     $HOME/.miniconda/bin/conda update -n base -c default conda
-    # $HOME/.miniconda/bin/conda config --add channels conda-forge
+    $HOME/.miniconda/bin/conda config --add channels conda-forge
   fi
 }
 # --- }}}
 
-# 4. copy dotfiles {{{
+# 4. change default shell by zsh {{{
+# ===============================
+config_zsh () {
+  printf "\nInstalling Oh-my-zsh? [y/n] "; read OK
+  if [ "$OK" != "Y" ] && [ "$OK" != "y" ]
+  then
+    printf "\n Exiting installation...\n"
+    exit 0
+  else
+    #
+    # download oh-my-zsh and spaceship
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+    curl -fsSL https://starship.rs/install.sh | bash
+    #
+  fi
+}
+# --- }}}
+
+# 5. copy dotfiles {{{
 # ==============================
 copy_dotfiles () {
   printf "\nAdd dotfiles [y/n] "; read OK
@@ -165,89 +160,51 @@ copy_dotfiles () {
     exit 0
   else
     #
-    # git configuration
-    git config --global user.name "Daniel Santiago"
-    git config --global user.email dspelaez@gmail.com
-    #
     # clone repository and copy files to $HOME
-    rm -rf dotfiles
+    rm -rf $HOME/dotfiles
     git clone https://github.com/dspelaez/dotfiles.git
     cd dotfiles && cp -r dotfiles $HOME/.dotfiles
     #
     # make symbolic links
-    mkdir -p $HOME/.matplotlib
-    ln -sf $HOME/.dotfiles/profile $HOME/.profile
-    ln -sf $HOME/.dotfiles/latexmk $HOME/.latexmk
-    ln -sf $HOME/.dotfiles/tmux.conf $HOME/.tmux.conf
-    ln -sf $HOME/.dotfiles/matplotlibrc $HOME/.matplotlib/matplotlibrc
-    cd ..
-
+    sh ./symlink.sh
+    cd $HOME
   fi
 }
 # --- }}}
 
-# 5. vim neovim, tmux conf {{{
+# 6. config neovim and tmux {{{
 # ==============================
 config_vim () {
+  printf "\nConfig neovim? [y/n] "; read OK
+  if [ "$OK" != "Y" ] && [ "$OK" != "y" ]
+  then
+    printf "\n Exiting installation...\n"
+    exit 0
+  else
+    #
+    # create virtual environment including neovim and jedi
+    # TODO: include flake8 or pylint or something
+    printf "\nCreating virtual environment for neovim\n";
+    $HOME/.miniconda/bin/conda create -n neovim python=3.8
+    $HOME/.miniconda/bin/conda install -c conda-forge -n neovim neovim jedi unidecode
 
-  # vim-plug for neovim
-  if [ ! -e ~/.config/nvim/autoload/plug.vim ]; then
-    printf "\nInstalling vim-plug for neovim"
-    curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
-      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    # config neovim and vim
+    nvim +PlugInstall +PlugUpgrade +PlugUpdate +PlugClean! +UpdateRemotePlugins +qall
+    vim +PlugInstall +PlugUpgrade +PlugUpdate +PlugClean! +UpdateRemotePlugins +qall
   fi
-  
-  # vim-plug for vim
-  if [ ! -e ~/.vim/autoload/plug.vim ]; then
-    printf "\nInstalling vim-plug for vim"
-    curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+  printf "\nConfig tmux & tmuxinator? [y/n] "; read OK
+  if [ "$OK" != "Y" ] && [ "$OK" != "y" ]
+  then
+    printf "\n Exiting installation...\n"
+    exit 0
+  else
+    # config tmux
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+    tmux source $HOME/.tmux.conf
   fi
-
-  # copy dotfiles
-  printf "\nCopy dotfiles\n";
-  ln -sf $HOME/.dotfiles/vimrc $HOME/.vimrc
-  ln -sf $HOME/.dotfiles/init.vim $HOME/.config/nvim/init.vim
-
-  # solarized color
-  mkdir -p $HOME/.vim/colors
-  wget -nc -nv https://raw.githubusercontent.com/flazz/vim-colorschemes/master/colors/solarized.vim \
-    -O $HOME/.vim/colors/solarized.vim
-  
-  # create virtual environment including neovim and jedi
-  # TODO: include flake8 or pylint or something
-  printf "\nCreating virtual environment for neovim\n";
-  $HOME/.miniconda/bin/conda create -n neovim python=3.6.5
-  $HOME/.miniconda/bin/conda install -c conda-forge -n neovim neovim jedi unidecode
-
-  # config neovim and vim
-  nvim +PlugInstall +PlugUpgrade +PlugUpdate +PlugClean! +UpdateRemotePlugins +qall
-  vim +PlugInstall +PlugUpgrade +PlugUpdate +PlugClean! +UpdateRemotePlugins +qall
-
-  # config tmux
-  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-  tmux source $HOME/.tmux.conf
-
-  # install some fonts
-  brew tap caskroom/fonts
-  brew cask install font-source-code-pro font-inconsolata
 }
 # --- }}}
-
-# 6. change default shell by zsh {{{
-# ===============================
-config_zsh () {
-  printf "\nInstalling oh-my-zsh?\n"
-  #
-  # download ohmyzsh
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-  #
-  # add .profile to .zshrc
-  echo "" >> $HOME/.zshrc
-  echo "source $HOME/.profile" >> $HOME/.zshrc
-}
-# --- }}}
-
 
 
 # parse the arguments to execute the program
@@ -278,22 +235,22 @@ else
   elif [ $arg == "conda" ]; then
     install_conda
   #
+  elif [ $arg == "zsh" ]; then
+    config_zsh
+  #
   elif [ $arg == "dotfiles" ]; then
     copy_dotfiles
   #
   elif [ $arg == "vim" ]; then
     config_vim
   #
-  elif [ $arg == "zsh" ]; then
-    config_zsh
-  #
   elif [ $# -eq 0 ]; then
     install_xcode
     install_homebrew
     install_conda
+    config_zsh
     copy_dotfiles
     config_vim
-    config_zsh
   #
   else
     printf "\n Invalid argument. Exiting installation...\n"

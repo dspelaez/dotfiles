@@ -22,11 +22,12 @@ ln -sf $DOTFILES/python/matplotlibrc $HOME/.matplotlib/matplotlibrc
 # shell
 ln -sf $DOTFILES/shell/gitconfig $HOME/.gitconfig
 ln -sf $DOTFILES/shell/zshrc $HOME/.zshrc
+ln -sf $DOTFILES/shell/secrets $HOME/.secrets
 ln -sf $DOTFILES/shell/starship.toml $CONFIG/starship.toml
 
 # vim
 ln -sf $DOTFILES/vim/init.vim $CONFIG/nvim/init.vim
-ln -sf $DOTFILES/vim/spell $CONFIG/nvim/spell
+ln -sf $DOTFILES/vim/spell $CONFIG/nvim/
 ln -sf $DOTFILES/vim/templates $CONFIG/nvim/
 ln -sf $DOTFILES/vim/ultisnips $CONFIG/nvim/
 

@@ -89,35 +89,11 @@
   map <Esc><Esc> :w<CR>
   map Q mxgqip`x
 " --- }}}
-
-
-" ========================== tipos de archivo =================================
-" text files {{{
-" ----------
-  filetype plugin on
-  autocmd FileType markdown set spell spelllang=en,es
-  autocmd FileType tex      set spell spelllang=en,es
-" --- }}}
-
-" python files {{{
-" ------------
-  autocmd FileType py set foldmethod=marker shiftwidth=2 softtabstop=2
-" --- }}}
-
-" bibtex files {{{
-" ------------
-  "function doi2bib(doi)
-    "read !python ~/Dropbox/References/doi2bib.py doi
-  "endfunction
-  
-"function! DoiToBib()
-  "let curline = getline('.')
-  "call inputsave()
-  "let doi = input('Enter doi: ')
-  "call inputrestore()
-  ""call setline('.', curline . ' ' . name)
-  "read !python ~/Dropbox/References/doi2bib.py . doi
-"endfunction
+"
+" terminal configuration {{{
+" -----------
+  tnoremap <Esc> <C-\><C-n>
+  autocmd TermOpen * setlocal nonumber norelativenumber
 " --- }}}
 
 
@@ -197,7 +173,6 @@
   let g:UltiSnipsJumpForwardTrigger = '<tab>'
   let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
   "let g:UltiSnipsSnippetDirectories=[$HOME.'/.config/nvim/ultisnips']
-
 " --- }}}
 
 " vimwiki {{{
@@ -236,6 +211,7 @@
     let g:latex_view_general_viewer = "zathura"
   endif
   "
+  let g:tex_flavor = 'latex'
   let g:tex_comment_nospell = 1
   let g:tex_conceal = ""
   let g:vimtex_compiler_latexmk = {
@@ -250,11 +226,26 @@
       \   '-interaction=nonstopmode',
       \ ]}
 " --- }}}
+ 
 
-" hledger {{{
-  au BufNewFile,BufRead *.journal.md,*.ledger setf ledger | comp ledger
-  let g:ledger_maxwidth = 60
-  let g:ledger_fold_blanks = 1
-" }}}
+
+" ========================== tipos de archivo =================================
+" text files {{{
+" ----------
+  filetype plugin on
+  au BufRead,BufNewFile *.md set spell spelllang=en,es
+  au BufRead,BufNewFile *.tex set spell spelllang=en,es
+" --- }}}
+
+" python files {{{
+" ------------
+  au BufRead,BufNewFile *.py set foldmethod=marker shiftwidth=4 softtabstop=4
+" --- }}}
+ 
+" html files {{{
+" ------------
+  au BufRead,BufNewFile *.html set textwidth=200 nowrap 
+" --- }}}
+
 
 " ==========================   end of file   =================================
