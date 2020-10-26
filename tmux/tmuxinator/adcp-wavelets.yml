@@ -1,6 +1,6 @@
 
 name: adcp-wavelets
-root: ~/Workspace/ucd/thesis/adcp-wavelets
+root: ~/Workspace/ucd/projects/adcp-wavelets/src
 
 # Optional tmux socket
 # socket_name: foo
@@ -41,7 +41,7 @@ root: ~/Workspace/ucd/thesis/adcp-wavelets
 # Runs after everything. Use it to attach to tmux with custom options etc.
 # post: tmux -CC attach -t work
 #
-pre_window: conda deactivate; clear
+pre_window: conda deactivate; conda activate highwave; clear
 
 windows:
   - editor:
