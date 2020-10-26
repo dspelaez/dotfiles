@@ -25,7 +25,8 @@
 update_system () {
   clear
   printf "\nUpdating operating system\n"
-  apt -y update && apt -y upgrade
+  sudo apt -y update
+  sudo apt -y upgrade
 }
 # --- }}}
 
@@ -50,11 +51,12 @@ install_packages () {
     htop
     ffmpeg
     nodejs
+    zsh
     openssh-client
     openssh-server
     gnome-tweaks
     ubuntu-restricted-extras
-  )
+    )
 
   printf "\nThe following apps will be installed\n"
   printf '   - %s\n' "${apps[@]}"
@@ -64,7 +66,7 @@ install_packages () {
     continue
   else
     for app in "${apps[@]}"; do
-      apt install -y ${app}
+      sudo apt install -y ${app}
     done
   fi
 
@@ -101,15 +103,15 @@ install_packages () {
 # 3. install conda {{{
 # ===============================
 install_conda () {
-  # TODO: Better ask for installing miniconda or anaconda
+
   printf "\nInstalling Miniconda? [y/n] "; read OK
   if [ "$OK" != "Y" ] && [ "$OK" != "y" ]
   then
     printf "\n Exiting installation...\n"
     exit 0
   else
-    wget -nc -nv https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
-    bash ./Miniconda3-latest-MacOSX-x86_64.sh -s -b -p $HOME/.miniconda
+    wget -nc -nv https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
+    bash ./Miniconda3-latest-Linux-x86_64.sh -s -b -p $HOME/.miniconda
     $HOME/.miniconda/bin/conda update -n base -c default conda
     $HOME/.miniconda/bin/conda config --add channels conda-forge
   fi
@@ -146,10 +148,10 @@ copy_dotfiles () {
     #
     # clone repository and copy files to $HOME
     rm -rf $HOME/dotfiles
-    git clone https://github.com/dspelaez/dotfiles.git
-    cd dotfiles && cp -r dotfiles $HOME/.dotfiles
+    git clone https://github.com/dspelaez/dotfiles.git .dotfiles
     #
     # make symbolic links
+    cd .dotfiles
     sh ./symlink.sh
     cd $HOME
   fi
@@ -194,7 +196,7 @@ config_vim () {
 # parse the arguments to execute the program
 # ===========================================
 
-printf "\nSetting up you OSX\n"
+printf "\nSetting up your Ubuntu\n"
 printf "\nConitnue? [y/n] "; read OK
 if [ "$OK" != "Y" ] && [ "$OK" != "y" ]
 then
@@ -202,24 +204,20 @@ then
   exit 0
 else
 
-  # create main directory
-  mkdir -p $HOME/tmp/
-  cd $HOME/tmp
-
   # parse the argument
   arg=$1
 
   # install each part separately
-  if [ $arg == "xcode" ]; then
-    install_xcode
+  if [ $arg == "update" ]; then
+    update_system
   #
-  elif [ $arg == "homebrew" ]; then
-    install_homebrew
+  elif [ $arg == "packages" ]; then
+    install_packages
   #
   elif [ $arg == "conda" ]; then
     install_conda
   #
-  elif [ $arg == "zsh" ]; then
+  elif [ $arg == "shell" ]; then
     config_zsh
   #
   elif [ $arg == "dotfiles" ]; then
@@ -229,8 +227,8 @@ else
     config_vim
   #
   elif [ $# -eq 0 ]; then
-    install_xcode
-    install_homebrew
+    update_system
+    install_packages
     install_conda
     config_zsh
     copy_dotfiles
