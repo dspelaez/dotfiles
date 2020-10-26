@@ -11,8 +11,8 @@
 # -------------------------------------------------------------------
 #
 #   Usage:
-#      curl https://raw.githubusercontent.com/dspelaez/dotfiles/master/config.sh -o config.sh
-#      sh ./config.sh 
+#      curl https://raw.githubusercontent.com/dspelaez/dotfiles/master/config_ubuntu.sh -o config.sh
+#      [sudo] sh ./config.sh 
 #
 #   Author:
 #     Daniel Santiago
@@ -20,44 +20,25 @@
 # ===================================================================
 
 
-
-# 1. install xcode {{{
+# 1. preliminary steps {{{
 # ===============================
-install_xcode () {
+update_system () {
   clear
-  if [[ "$(xcode-select -p)" == "" ]]; then
-    printf "\nInstalling Xcode\n"
-    xcode-select --install
-  else
-    printf "\nXcode Installed\n"
-  fi
+  printf "\nUpdating operating system\n"
+  apt -y update && apt -y upgrade
 }
 # --- }}}
 
-# 2. homebrew {{{
+# 2. install packages {{{
 # ===============================
-install_homebrew () {
+install_packages () {
   clear
-  if ! command -v brew > /dev/null 2>&1; then
-    printf "\nInstalling Homebrew\n"
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-  else
-    printf "\nHomebrew Installed\n"
-  fi
 
-  # 3.1. update homebrew
-  # -------------------------------
-  printf "\nUpdating Homebrew\n"
-  brew update 
-  brew update
-  brew upgrade
-
-  # 3.2. install some apps
+  # 2.1. install some apps
   # -------------------------------
   apps=(
     wget 
     git
-    coreutils
     gcc
     vim
     neovim
@@ -68,10 +49,14 @@ install_homebrew () {
     markdown
     htop
     ffmpeg
-    node
-    )
+    nodejs
+    openssh-client
+    openssh-server
+    gnome-tweaks
+    ubuntu-restricted-extras
+  )
 
-  printf "\nThe following formulae will be installed\n"
+  printf "\nThe following apps will be installed\n"
   printf '   - %s\n' "${apps[@]}"
   printf "\nContinue [y/n] "; read OK
   if [ "$OK" != "Y" ] && [ "$OK" != "y" ]
@@ -79,38 +64,37 @@ install_homebrew () {
     continue
   else
     for app in "${apps[@]}"; do
-      brew install ${app}
+      apt install -y ${app}
     done
   fi
 
-  # 3.4. install some casks
+  # 2.2. install some snaps
   # -------------------------------
-  apps=(
-    brave-browser
-    skim
-    spotify
-    dropbox
-    google-backup-and-sync
-    google-drive-file-stream
-    docker
-    iterm2
-    inkscape
-    mactex
-    )
+  #apps=(
+    #brave-browser
+    #skim
+    #spotify
+    #dropbox
+    #google-backup-and-sync
+    #google-drive-file-stream
+    #docker
+    #iterm2
+    #inkscape
+    #mactex
+    #)
 
-  printf "\nThe following casks will be installed\n"
-  printf '   - %s\n' "${apps[@]}"
-  printf "\nContinue [y/n] "; read OK
-  if [ "$OK" != "Y" ] && [ "$OK" != "y" ]
-  then
-    printf "\n Exiting installation...\n"
-    exit 0
-  else
-    for app in "${apps[@]}"; do
-      brew cask install ${app}
-    done
-    brew cleanup
-  fi
+  #printf "\nThe following casks will be installed\n"
+  #printf '   - %s\n' "${apps[@]}"
+  #printf "\nContinue [y/n] "; read OK
+  #if [ "$OK" != "Y" ] && [ "$OK" != "y" ]
+  #then
+    #printf "\n Exiting installation...\n"
+    #exit 0
+  #else
+    #for app in "${apps[@]}"; do
+      #snap install ${app}
+    #done
+  #fi
 }
 # --- }}}
 
