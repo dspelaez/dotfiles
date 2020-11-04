@@ -132,13 +132,13 @@ fi
 
 # pubs autocompletion
 # Enable and load bashcompinit
-autoload -Uz compinit bashcompinit
-compinit
-bashcompinit
-# Argcomplete explicit registration for pubs
-eval "$(register-python-argcomplete pubs)"
+#autoload -Uz compinit bashcompinit
+#compinit
+#bashcompinit
+## Argcomplete explicit registration for pubs
+#eval "$(register-python-argcomplete pubs)"
 
 # eval environmental variables
-source $HOME/.secrets
+#source $HOME/.secrets
 
 # --- end of file ---

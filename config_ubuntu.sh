@@ -38,6 +38,7 @@ install_packages () {
   # 2.1. install some apps
   # -------------------------------
   apps=(
+    curl
     wget 
     git
     gcc
@@ -55,6 +56,7 @@ install_packages () {
     openssh-client
     openssh-server
     gnome-tweaks
+    light-themes
     ubuntu-restricted-extras
     )
 
@@ -244,3 +246,9 @@ fi
 # cd ../ && rm -rf tmp
 
 # --- end of file ---
+gsettings set org.gnome.shell.extensions.dash-to-dock extend-height false
+gsettings set org.gnome.shell.extensions.dash-to-dock dock-position BOTTOM
+gsettings set org.gnome.shell.extensions.dash-to-dock dock-fixed false
+gsettings set org.gnome.shell.extensions.dash-to-dock dash-max-icon-size 40
+gsettings set org.gnome.desktop.wm.preferences button-layout 'close,minimize,maximize:'
+gsettings set org.gnome.shell.extensions.dash-to-dock multi-monitor false

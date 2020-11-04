@@ -1,54 +1,54 @@
 # ~/.config/starship.toml
 
-add_newline = false
+#add_newline = false
 
-[cmd_duration]
-min_time = 10000
+#[cmd_duration]
+#min_time = 10000
 
-[directory]
-truncation_length = 3
-prefix = ""
+#[directory]
+#truncation_length = 3
+#format = ""
 
-[aws]
-symbol = "[aws] "
+#[aws]
+#symbol = "[aws] "
 
-[battery]
-full_symbol = ""
-charging_symbol = ""
-discharging_symbol = "[battery] "
+#[battery]
+#full_symbol = ""
+#charging_symbol = ""
+#discharging_symbol = "[battery] "
 
-[conda]
-symbol = "[conda] "
+#[conda]
+#symbol = "[conda] "
 
-[git_branch]
-symbol = "[git] "
+#[git_branch]
+#symbol = "[git] "
 
-[golang]
-symbol = "[go] "
+#[golang]
+#symbol = "[go] "
 
-[hg_branch]
-symbol = "[hg] "
+#[hg_branch]
+#symbol = "[hg] "
 
-[java]
-symbol = "[java] "
+#[java]
+#symbol = "[java] "
 
-[memory_usage]
-disabled = true
+#[memory_usage]
+#disabled = true
 
-[nodejs]
-symbol = "⬢ "
+#[nodejs]
+#symbol = "[js] "
 
-[package]
-symbol = "[pkg] "
+#[package]
+#symbol = "[pkg] "
 
-[php]
-symbol = "[php] "
+#[php]
+#symbol = "[php] "
 
-[python]
-symbol = "[py] "
+#[python]
+#symbol = "[py] "
 
-[ruby]
-symbol = "[rb] "
+#[ruby]
+#symbol = "[rb] "
 
-[rust]
-symbol = "[rust] "
+#[rust]
+#symbol = "[rust] "
