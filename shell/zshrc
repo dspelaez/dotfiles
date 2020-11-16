@@ -109,10 +109,6 @@ if [[ "$(uname)" == "Linux" ]]; then
   alias open="xdg-open"
 fi
 
-# common folders and paths
-export NOTES=$HOME/Dropbox/notes
-export LEDGER_FILE=$NOTES/personal/hledger.journal.md
-
 # Avoid the ugly green highligh in the some
 # dirs with others write access
 # export LS_COLORS="$LS_COLORS:ow=1;34:tw=1;34:"
@@ -123,7 +119,7 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export PYTHONDONTWRITEBYTECODE=1      
 export PYTHONUSERBASE="$HOME/.local/"
-export PATH=$PYTHONUSERBASE:$PATH
+export PATH=$PYTHONUSERBASE/bin:$PATH
 
 # gnu coreutils (mac only)
 if [[ "$(uname)" == "Darwin" ]]; then
@@ -132,11 +128,11 @@ fi
 
 # pubs autocompletion
 # Enable and load bashcompinit
-#autoload -Uz compinit bashcompinit
-#compinit
-#bashcompinit
-## Argcomplete explicit registration for pubs
-#eval "$(register-python-argcomplete pubs)"
+autoload -Uz compinit bashcompinit
+compinit
+bashcompinit
+# Argcomplete explicit registration for pubs
+eval "$(register-python-argcomplete pubs)"
 
 # eval environmental variables
 #source $HOME/.secrets

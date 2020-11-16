@@ -121,7 +121,7 @@
   Plug 'ledger/vim-ledger'
   Plug 'vimwiki/vimwiki'
   Plug 'plasticboy/vim-markdown'
-  Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+  Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
   Plug 'itchyny/calendar.vim'
   Plug 'lervag/vimtex'
   Plug 'mattn/emmet-vim'

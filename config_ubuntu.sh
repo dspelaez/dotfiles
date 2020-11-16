@@ -58,6 +58,11 @@ install_packages () {
     gnome-tweaks
     light-themes
     ubuntu-restricted-extras
+    inkscape
+    texlive-full
+    rclone
+    zathura
+    s3fs
     )
 
   printf "\nThe following apps will be installed\n"
@@ -74,31 +79,23 @@ install_packages () {
 
   # 2.2. install some snaps
   # -------------------------------
-  #apps=(
-    #brave-browser
-    #skim
-    #spotify
-    #dropbox
-    #google-backup-and-sync
-    #google-drive-file-stream
-    #docker
-    #iterm2
-    #inkscape
-    #mactex
-    #)
+  apps=(
+    brave
+    spotify
+    )
 
-  #printf "\nThe following casks will be installed\n"
-  #printf '   - %s\n' "${apps[@]}"
-  #printf "\nContinue [y/n] "; read OK
-  #if [ "$OK" != "Y" ] && [ "$OK" != "y" ]
-  #then
-    #printf "\n Exiting installation...\n"
-    #exit 0
-  #else
-    #for app in "${apps[@]}"; do
-      #snap install ${app}
-    #done
-  #fi
+  printf "\nThe following casks will be installed\n"
+  printf '   - %s\n' "${apps[@]}"
+  printf "\nContinue [y/n] "; read OK
+  if [ "$OK" != "Y" ] && [ "$OK" != "y" ]
+  then
+    printf "\n Exiting installation...\n"
+    exit 0
+  else
+    for app in "${apps[@]}"; do
+      snap install ${app}
+    done
+  fi
 }
 # --- }}}
 
